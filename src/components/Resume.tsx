@@ -17,14 +17,12 @@ const ConnectorLine = ({
   isHovered?: boolean;
   isMobile?: boolean;
 }) => {
-  const color = isLeft ? "cyan" : "fuchsia";
-
   return (
     <div
       className={`
         h-[4px] 
-        ${isMobile ? "w-8" : `w-8`}
-        bg-${color}-500
+        ${isMobile ? "w-8" : "w-8"}
+        ${isLeft ? "bg-cyan-500" : "bg-fuchsia-500"}
         ${isHovered ? "opacity-100" : "opacity-70"}
         transition-all duration-300
       `}
@@ -44,7 +42,8 @@ const TimelineCard = ({
   hoveredIndex: number | null;
 }) => {
   const isLeft = item.type === "experience";
-  const color = isLeft ? "cyan" : "fuchsia";
+  const textColor = isLeft ? "text-cyan-400" : "text-fuchsia-400";
+  const borderColor = isLeft ? "border-cyan-500" : "border-fuchsia-500";
 
   return (
     <motion.div
@@ -57,7 +56,7 @@ const TimelineCard = ({
       className={`
         group relative w-full 
         md:w-[calc(100%-1rem)] 
-        ${isLeft ? "md:mr-auto pl-12  md:pl-0" : "md:ml-auto pl-12  md:pl-0"}
+        ${isLeft ? "md:mr-auto pl-12 md:pl-0" : "md:ml-auto pl-12 md:pl-0"}
       `}
     >
       {/* Mobile Timeline Elements */}
@@ -85,28 +84,26 @@ const TimelineCard = ({
         }}
         className={`
           relative bg-gray-900 p-12 rounded-lg
-          border border-${color}-500
-          hover:border-${color}-500
+          border ${borderColor}
+          hover:${borderColor}
           backdrop-blur-sm
           transition-colors duration-300
         `}
       >
         <div className="flex justify-between items-start mb-2">
-          <h3 className={`text-xl font-bold text-${color}-400`}>
-            {item.title}
-          </h3>
+          <h3 className={`text-xl font-bold ${textColor}`}>{item.title}</h3>
           <span
             className={`
               text-xs px-2 py-1 rounded-md
-              bg-transparent text-${color}-400
-              border border-${color}-500
+              bg-transparent ${textColor}
+              border ${borderColor}
             `}
           >
             {item.type === "experience" ? "Experience" : "Education"}
           </span>
         </div>
         <p className="text-gray-400 mb-2">{item.subtitle}</p>
-        <p className={`text-sm text-${color}-400`}>{item.period}</p>
+        <p className={`text-sm ${textColor}`}>{item.period}</p>
       </motion.div>
     </motion.div>
   );
@@ -154,7 +151,7 @@ const Resume = () => {
           My Resume
         </h1>
         <div className="flex justify-center items-center gap-24">
-          <span className="hidden md:block bg-gradient-to-r from-cyan-400 to-fuchsia-400 font-semibold text-lg  text-transparent bg-clip-text">
+          <span className="hidden md:block bg-gradient-to-r from-cyan-400 to-fuchsia-400 font-semibold text-lg text-transparent bg-clip-text">
             Job Experience & Education
           </span>
         </div>
@@ -175,19 +172,6 @@ const Resume = () => {
           w-[4px] bg-gradient-to-b from-cyan-500 via-fuchsia-500 to-cyan-500
           opacity-50"
         />
-
-        {/* Desktop Timeline Points */}
-        <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 top-1 bottom-1">
-          {items.map((_item, index) => (
-            <div
-              key={index}
-              className="absolute -ml-[6px]"
-              style={{
-                top: `${index * 155 + 90}px`,
-              }}
-            ></div>
-          ))}
-        </div>
 
         {/* Timeline Content */}
         <div className="relative md:grid md:grid-cols-2 md:gap-8">
