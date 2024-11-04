@@ -6,6 +6,7 @@ const SkillDiagram = () => {
   const [activeSkill, setActiveSkill] = useState<number | null>(null);
   const [currentAnimation, setCurrentAnimation] = useState(0);
   const [activeLine, setActiveLine] = useState<number | null>(null);
+  const [isCpuHovered, setIsCpuHovered] = useState(false);
   const controls = useAnimationControls();
 
   const [windowSize, setWindowSize] = useState({
@@ -336,18 +337,23 @@ const SkillDiagram = () => {
             : "scale-100"
         }`}
       >
-        {/* CPU core with responsive sizing */}
+        {/* CPU core with hover detection */}
         <div
           className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
                     ${getCpuSize()} bg-gray-800/80 rounded-lg z-30
                     border-2 border-cyan-400 
-                    backdrop-blur-sm overflow-hidden`}
+                    backdrop-blur-sm overflow-hidden
+                    transition-all duration-500 cursor-pointer`}
           style={{
-            boxShadow: `0 0 ${20 * scale}px rgba(34,211,238,0.6),
+            boxShadow: `0 0 ${20 * scale}px ${
+              isCpuHovered ? "rgba(34,211,238,0.8)" : "rgba(34,211,238,0.6)"
+            },
                      inset 0 0 ${15 * scale}px rgba(34,211,238,0.3)`,
           }}
+          onMouseEnter={() => setIsCpuHovered(true)}
+          onMouseLeave={() => setIsCpuHovered(false)}
         >
-          {/* CPU Grid Pattern */}
+          {/* CPU Grid Pattern remains the same */}
           <div className="absolute inset-0 grid grid-cols-4 grid-rows-4 gap-0.5 p-2">
             {[...Array(16)].map((_, i) => (
               <div
@@ -363,12 +369,18 @@ const SkillDiagram = () => {
             ))}
           </div>
 
-          {/* CPU Label with responsive text */}
+          {/* CPU Label with enhanced animation when hovered */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center z-10">
               <span
-                className={`${getCpuTextSize()} font-bold text-cyan-400 animate-pulse`}
-                style={{ textShadow: `0 0 ${10 * scale}px #22d3ee` }}
+                className={`${getCpuTextSize()} font-bold text-cyan-400  ${
+                  isCpuHovered ? "animate-pulse " : "animate-pulse"
+                }`}
+                style={{
+                  textShadow: `0 0 ${10 * scale}px ${
+                    isCpuHovered ? "#ffffff" : "#22d3ee"
+                  }`,
+                }}
               >
                 SKILL
               </span>
@@ -404,12 +416,16 @@ const SkillDiagram = () => {
                   onMouseEnter={() => setHoveredSkill(skill.id)}
                   onMouseLeave={() => setHoveredSkill(null)}
                   animate={{
-                    stroke: isLineActive || isHovered ? skill.color : "#1f2937",
+                    stroke:
+                      isLineActive || isHovered || isCpuHovered
+                        ? skill.color
+                        : "#1f2937",
                     filter:
-                      isLineActive || isHovered
+                      isLineActive || isHovered || isCpuHovered
                         ? `drop-shadow(0 0 8px ${skill.glowColor})`
                         : "none",
-                    opacity: isLineActive || isHovered ? 1 : 0.3,
+                    opacity:
+                      isLineActive || isHovered || isCpuHovered ? 1 : 0.3,
                   }}
                 />
                 {skill.pathPoints.map((point, i) => (
@@ -422,12 +438,16 @@ const SkillDiagram = () => {
                     onMouseEnter={() => setHoveredSkill(skill.id)}
                     onMouseLeave={() => setHoveredSkill(null)}
                     animate={{
-                      fill: isLineActive || isHovered ? skill.color : "#1f2937",
+                      fill:
+                        isLineActive || isHovered || isCpuHovered
+                          ? skill.color
+                          : "#1f2937",
                       filter:
-                        isLineActive || isHovered
+                        isLineActive || isHovered || isCpuHovered
                           ? `drop-shadow(0 0 5px ${skill.glowColor})`
                           : "none",
-                      opacity: isLineActive || isHovered ? 1 : 0.3,
+                      opacity:
+                        isLineActive || isHovered || isCpuHovered ? 1 : 0.3,
                     }}
                   />
                 ))}
@@ -483,9 +503,9 @@ const SkillDiagram = () => {
                 onMouseEnter={() => setHoveredSkill(skill.id)}
                 onMouseLeave={() => setHoveredSkill(null)}
                 animate={{
-                  scale: isActive || isHovered ? 1.15 : 1,
+                  scale: isActive || isHovered || isCpuHovered ? 1.15 : 1,
                   boxShadow:
-                    isActive || isHovered
+                    isActive || isHovered || isCpuHovered
                       ? `0 0 ${25 * scale}px ${skill.glowColor}`
                       : `0 0 ${10 * scale}px rgba(0,0,0,0.3)`,
                 }}
@@ -496,13 +516,13 @@ const SkillDiagram = () => {
                   className="w-4/5 h-4/5 transition-all duration-500"
                   style={{
                     filter:
-                      isActive || isHovered
+                      isActive || isHovered || isCpuHovered
                         ? "brightness(120%) grayscale(0)"
                         : "brightness(60%) grayscale(100%)",
                   }}
                 />
 
-                {(isActive || isHovered) && (
+                {(isActive || isHovered || isCpuHovered) && (
                   <motion.div
                     className="absolute w-full h-full rounded-lg border-2 border-current"
                     animate={{
@@ -518,16 +538,17 @@ const SkillDiagram = () => {
                   />
                 )}
 
-                {isHovered && (
-                  <div
-                    className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 
+                {isHovered ||
+                  (isCpuHovered && (
+                    <div
+                      className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 
                            bg-gray-800/90 px-3 py-1.5 rounded-lg text-sm text-white
                            whitespace-nowrap border border-gray-700
                            shadow-lg backdrop-blur-sm"
-                  >
-                    {skill.name}
-                  </div>
-                )}
+                    >
+                      {skill.name}
+                    </div>
+                  ))}
               </motion.div>
             </React.Fragment>
           );

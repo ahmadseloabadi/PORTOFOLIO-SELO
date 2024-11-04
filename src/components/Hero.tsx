@@ -139,7 +139,7 @@ const Hero = () => {
               Hi, I'm{" "}
               <span className="relative">
                 <span
-                  className="text-black
+                  className="text-gray-950
         [text-shadow:_0_0_5px_#fff,_0_0_10px_#fff,_0_0_20px_#fff]
         hover:[text-shadow:_0_0_10px_#fff,_0_0_20px_#fff,_0_0_30px_#fff]
         transition-all duration-300"
