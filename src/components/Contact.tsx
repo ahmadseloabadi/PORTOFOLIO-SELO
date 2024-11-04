@@ -46,9 +46,7 @@ const Contact = () => {
           import.meta.env.VITE_APP_SERVICE_ID_EMAILJS || "",
           import.meta.env.VITE_APP_TEMPLATE_ID_EMAILJS || "",
           templateParams,
-          {
-            publicKey: import.meta.env.VITE_APP_USER_ID_EMAILJS || "",
-          }
+          import.meta.env.VITE_APP_PUBLIC_KEY_EMAILJS || ""
         )
         .then(
           (response) => {
