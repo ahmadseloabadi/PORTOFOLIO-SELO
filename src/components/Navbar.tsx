@@ -82,13 +82,7 @@ const Navbar = () => {
             className="flex-shrink-0 group cursor-pointer"
             onClick={() => handleNavClick("home")}
           >
-            <span
-              className="text-2xl font-bold bg-gradient-to-r from-teal-400 via-cyan-400 to-purple-500 
-                           bg-clip-text text-transparent transition-all duration-300 
-                           group-hover:scale-105 inline-block"
-            >
-              My Portolio
-            </span>
+            <img src="/assets/superman.png" alt="" className="h-16 w-16 " />
           </div>
 
           {/* Desktop Navigation */}

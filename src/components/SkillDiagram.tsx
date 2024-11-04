@@ -8,122 +8,230 @@ const SkillDiagram = () => {
   const [activeLine, setActiveLine] = useState<number | null>(null);
   const controls = useAnimationControls();
 
+  const [windowSize, setWindowSize] = useState({
+    width: typeof window !== "undefined" ? window.innerWidth : 0,
+    height: typeof window !== "undefined" ? window.innerHeight : 0,
+  });
+
+  // Fungsi untuk menghitung skala berdasarkan ukuran layar dan orientasi
+  const calculateScale = () => {
+    const isPortrait = windowSize.height > windowSize.width;
+    const baseWidth = 1440; // Ukuran layar referensi untuk desktop
+    let scale;
+
+    if (windowSize.width <= 640) {
+      // Mobile
+      scale = isPortrait
+        ? Math.min(windowSize.width / (baseWidth * 0.4), 0.3)
+        : Math.min(windowSize.width / (baseWidth * 0.6), 0.4);
+    } else if (windowSize.width <= 768) {
+      // Tablet
+      scale = isPortrait
+        ? Math.min(windowSize.width / (baseWidth * 0.5), 0.4)
+        : Math.min(windowSize.width / (baseWidth * 0.7), 0.5);
+    } else if (windowSize.width <= 1024) {
+      // Small laptop
+      scale = Math.min(windowSize.width / (baseWidth * 0.8), 0.7);
+    } else {
+      // Desktop
+      scale = Math.min(windowSize.width / baseWidth, 1);
+    }
+
+    return Math.max(scale, 0.25); // Minimal skala 0.25
+  };
+
+  // Update ukuran window saat resize dengan debounce
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+
+    const handleResize = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        setWindowSize({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+      }, 150); // Debounce 150ms
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
+  const scale = calculateScale();
+
+  // Fungsi untuk menghitung ukuran CPU core berdasarkan ukuran layar
+  const getCpuSize = () => {
+    if (windowSize.width <= 640) return "w-24 h-24"; // Mobile
+    if (windowSize.width <= 768) return "w-32 h-32"; // Tablet
+    return "w-40 h-40"; // Desktop
+  };
+
+  // Fungsi untuk menghitung ukuran font CPU text berdasarkan ukuran layar
+  const getCpuTextSize = () => {
+    if (windowSize.width <= 640) return "text-xl"; // Mobile
+    if (windowSize.width <= 768) return "text-2xl"; // Tablet
+    return "text-3xl"; // Desktop
+  };
+
   const skills = [
     {
       id: "js",
       name: "JavaScript",
-      position: { x: -580, y: -200 },
+      position: { x: -580 * scale, y: -200 * scale },
       color: "#F7DF1E",
       glowColor: "rgba(247, 223, 30, 0.6)",
-      path: "M-50,0 L-50,-250 L-200,-250 L-200,-150 L-400,-150 L-400,-300 L-570,-300 L-570,-200",
+      path: `M${-50 * scale},0 L${-50 * scale},${-250 * scale} L${
+        -200 * scale
+      },${-250 * scale} L${-200 * scale},${-150 * scale} L${-400 * scale},${
+        -150 * scale
+      } L${-400 * scale},${-300 * scale} L${-570 * scale},${-300 * scale} L${
+        -570 * scale
+      },${-200 * scale}`,
       pathPoints: [
-        { x: -50, y: 0 },
-        { x: -50, y: -250 },
-        { x: -200, y: -250 },
-        { x: -200, y: -150 },
-        { x: -400, y: -150 },
-        { x: -400, y: -300 },
-        { x: -570, y: -300 },
-        { x: -570, y: -250 },
+        { x: -50 * scale, y: 0 },
+        { x: -50 * scale, y: -250 * scale },
+        { x: -200 * scale, y: -250 * scale },
+        { x: -200 * scale, y: -150 * scale },
+        { x: -400 * scale, y: -150 * scale },
+        { x: -400 * scale, y: -300 * scale },
+        { x: -570 * scale, y: -300 * scale },
+        { x: -570 * scale, y: -200 * scale },
       ],
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
     },
     {
       id: "python",
       name: "Python",
-      position: { x: 560, y: -200 },
+      position: { x: 560 * scale, y: -200 * scale },
       color: "#3776AB",
       glowColor: "rgba(55, 118, 171, 0.6)",
-      path: "M50,0 L50,-250 L200,-250 L200,-150 L400,-150 L400,-300 L570,-300 L570,-200",
+      path: `M${50 * scale},0 L${50 * scale},${-250 * scale} L${200 * scale},${
+        -250 * scale
+      } L${200 * scale},${-150 * scale} L${400 * scale},${-150 * scale} L${
+        400 * scale
+      },${-300 * scale} L${570 * scale},${-300 * scale} L${570 * scale},${
+        -200 * scale
+      }`,
       pathPoints: [
-        { x: 50, y: 0 },
-        { x: 50, y: -250 },
-        { x: 200, y: -250 },
-        { x: 200, y: -150 },
-        { x: 400, y: -150 },
-        { x: 400, y: -300 },
-        { x: 570, y: -300 },
-        { x: 570, y: -250 },
+        { x: 50 * scale, y: 0 },
+        { x: 50 * scale, y: -250 * scale },
+        { x: 200 * scale, y: -250 * scale },
+        { x: 200 * scale, y: -150 * scale },
+        { x: 400 * scale, y: -150 * scale },
+        { x: 400 * scale, y: -300 * scale },
+        { x: 570 * scale, y: -300 * scale },
+        { x: 570 * scale, y: -200 * scale },
       ],
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
     },
     {
       id: "html",
       name: "HTML",
-      position: { x: -625, y: 0 },
+      position: { x: -625 * scale, y: 0 },
       color: "#E34F26",
       glowColor: "rgba(227, 79, 38, 0.6)",
-      path: "M0,0 L-200,0 L-200,-100 L-400,-100 L-400,0 L-300,0 L-300,100 L-500,100 L-500,10 L-550,10 L-625,10",
+      path: `M0,0 L${-200 * scale},0 L${-200 * scale},${-100 * scale} L${
+        -400 * scale
+      },${-100 * scale} L${-400 * scale},0 L${-300 * scale},0 L${
+        -300 * scale
+      },${100 * scale} L${-500 * scale},${100 * scale} L${-500 * scale},${
+        10 * scale
+      } L${-550 * scale},${10 * scale} L${-625 * scale},${10 * scale}`,
       pathPoints: [
         { x: 0, y: 0 },
-        { x: -200, y: 0 },
-        { x: -200, y: -100 },
-        { x: -400, y: -100 },
-        { x: -400, y: 0 },
-        { x: -300, y: 0 },
-        { x: -300, y: 100 },
-        { x: -500, y: 100 },
-        { x: -500, y: 10 },
-        { x: -550, y: 10 },
+        { x: -200 * scale, y: 0 },
+        { x: -200 * scale, y: -100 * scale },
+        { x: -400 * scale, y: -100 * scale },
+        { x: -400 * scale, y: 0 },
+        { x: -300 * scale, y: 0 },
+        { x: -300 * scale, y: 100 * scale },
+        { x: -500 * scale, y: 100 * scale },
+        { x: -500 * scale, y: 10 * scale },
+        { x: -550 * scale, y: 10 * scale },
+        { x: -625 * scale, y: 10 * scale },
       ],
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
     },
     {
       id: "css",
       name: "CSS",
-      position: { x: 610, y: 0 },
+      position: { x: 610 * scale, y: 0 },
       color: "#1572B6",
       glowColor: "rgba(21, 114, 182, 0.6)",
-      path: "M0,0 L200,0 L200,-100 L400,-100 L400,0 L300,0 L300,100 L500,100 L500,10 L560,10 L610,10",
+      path: `M0,0 L${200 * scale},0 L${200 * scale},${-100 * scale} L${
+        400 * scale
+      },${-100 * scale} L${400 * scale},0 L${300 * scale},0 L${300 * scale},${
+        100 * scale
+      } L${500 * scale},${100 * scale} L${500 * scale},${10 * scale} L${
+        560 * scale
+      },${10 * scale} L${610 * scale},${10 * scale}`,
       pathPoints: [
         { x: 0, y: 0 },
-        { x: 200, y: 0 },
-        { x: 200, y: -100 },
-        { x: 400, y: -100 },
-        { x: 400, y: 0 },
-        { x: 300, y: 0 },
-        { x: 300, y: 100 },
-        { x: 500, y: 100 },
-        { x: 500, y: 10 },
-        { x: 555, y: 10 },
+        { x: 200 * scale, y: 0 },
+        { x: 200 * scale, y: -100 * scale },
+        { x: 400 * scale, y: -100 * scale },
+        { x: 400 * scale, y: 0 },
+        { x: 300 * scale, y: 0 },
+        { x: 300 * scale, y: 100 * scale },
+        { x: 500 * scale, y: 100 * scale },
+        { x: 500 * scale, y: 10 * scale },
+        { x: 560 * scale, y: 10 * scale },
+        { x: 610 * scale, y: 10 * scale },
       ],
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
     },
     {
       id: "react",
       name: "React",
-      position: { x: -580, y: 200 },
+      position: { x: -580 * scale, y: 200 * scale },
       color: "#61DAFB",
       glowColor: "rgba(97, 218, 251, 0.6)",
-      path: "M-50,0 L-50,250 L-200,250 L-200,150 L-400,150 L-400,330 L-570,330 L-570,270 L-570,200",
+      path: `M${-50 * scale},0 L${-50 * scale},${250 * scale} L${
+        -200 * scale
+      },${250 * scale} L${-200 * scale},${150 * scale} L${-400 * scale},${
+        150 * scale
+      } L${-400 * scale},${330 * scale} L${-570 * scale},${330 * scale} L${
+        -570 * scale
+      },${270 * scale} L${-570 * scale},${200 * scale}`,
       pathPoints: [
-        { x: -50, y: 0 },
-        { x: -50, y: 250 },
-        { x: -200, y: 250 },
-        { x: -200, y: 150 },
-        { x: -400, y: 150 },
-        { x: -400, y: 330 },
-        { x: -570, y: 330 },
-        { x: -570, y: 270 },
+        { x: -50 * scale, y: 0 },
+        { x: -50 * scale, y: 250 * scale },
+        { x: -200 * scale, y: 250 * scale },
+        { x: -200 * scale, y: 150 * scale },
+        { x: -400 * scale, y: 150 * scale },
+        { x: -400 * scale, y: 330 * scale },
+        { x: -570 * scale, y: 330 * scale },
+        { x: -570 * scale, y: 270 * scale },
+        { x: -570 * scale, y: 200 * scale },
       ],
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
     },
     {
       id: "sql",
       name: "sql",
-      position: { x: 560, y: 200 },
+      position: { x: 560 * scale, y: 200 * scale },
       color: "#028DF8",
       glowColor: "rgba(56, 178, 172, 0.6)",
-      path: "M50,0 L50,250 L200,250 L200,150 L400,150 L400,330 L570,330 L570,270 L570,200",
+      path: `M${50 * scale},0 L${50 * scale},${250 * scale} L${200 * scale},${
+        250 * scale
+      } L${200 * scale},${150 * scale} L${400 * scale},${150 * scale} L${
+        400 * scale
+      },${330 * scale} L${570 * scale},${330 * scale} L${570 * scale},${
+        270 * scale
+      } L${570 * scale},${200 * scale}`,
       pathPoints: [
-        { x: 50, y: 0 },
-        { x: 50, y: 250 },
-        { x: 200, y: 250 },
-        { x: 200, y: 150 },
-        { x: 400, y: 150 },
-        { x: 400, y: 330 },
-        { x: 570, y: 330 },
-        { x: 570, y: 270 },
+        { x: 50 * scale, y: 0 },
+        { x: 50 * scale, y: 250 * scale },
+        { x: 200 * scale, y: 250 * scale },
+        { x: 200 * scale, y: 150 * scale },
+        { x: 400 * scale, y: 150 * scale },
+        { x: 400 * scale, y: 330 * scale },
+        { x: 570 * scale, y: 330 * scale },
+        { x: 570 * scale, y: 270 * scale },
       ],
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg",
     },
@@ -132,6 +240,7 @@ const SkillDiagram = () => {
   const animateBall = async (skill) => {
     setActiveLine(currentAnimation);
 
+    // Reset posisi dan tampilan awal
     controls.set({
       x: 0,
       y: 0,
@@ -139,19 +248,31 @@ const SkillDiagram = () => {
       opacity: 0,
     });
 
+    // Animasi munculnya bola
     await controls.start({
-      scale: 1,
+      scale: [0, 1.2, 1],
       opacity: 1,
-      transition: { duration: 0.3 },
+      transition: {
+        duration: 0.4,
+        times: [0, 0.7, 1],
+        ease: "easeOut",
+      },
     });
 
+    // Animasi perjalanan bola
     for (let i = 0; i < skill.pathPoints.length; i++) {
       await controls.start({
         x: skill.pathPoints[i].x,
         y: skill.pathPoints[i].y,
+        scale: [1, 1.2, 1], // Pulsing effect selama pergerakan
         transition: {
           duration: 0.5,
-          ease: "linear",
+          ease: "easeInOut",
+          scale: {
+            duration: 0.3,
+            repeat: 1,
+            repeatType: "reverse",
+          },
         },
       });
     }
@@ -159,21 +280,33 @@ const SkillDiagram = () => {
     setActiveSkill(currentAnimation);
     await new Promise((resolve) => setTimeout(resolve, 500));
 
+    // Animasi kembali
     for (let i = skill.pathPoints.length - 1; i >= 0; i--) {
       await controls.start({
         x: skill.pathPoints[i].x,
         y: skill.pathPoints[i].y,
+        scale: [1, 1.2, 1], // Pulsing effect selama pergerakan kembali
         transition: {
           duration: 0.5,
-          ease: "linear",
+          ease: "easeInOut",
+          scale: {
+            duration: 0.3,
+            repeat: 1,
+            repeatType: "reverse",
+          },
         },
       });
     }
 
+    // Animasi menghilang
     await controls.start({
-      scale: 0,
+      scale: [1, 1.2, 0],
       opacity: 0,
-      transition: { duration: 0.3 },
+      transition: {
+        duration: 0.4,
+        times: [0, 0.3, 1],
+        ease: "easeIn",
+      },
     });
 
     setActiveSkill(null);
@@ -184,26 +317,34 @@ const SkillDiagram = () => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       animateBall(skills[currentAnimation]);
-    }, 2000);
+    }, 3000);
     return () => clearTimeout(timeout);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentAnimation]);
 
   return (
     <div
-      className="w-full h-screen flex items-center justify-center bg-gray-950 "
+      className="w-full min-h-screen flex items-center justify-center bg-gray-950 py-8 px-4"
       id="Skills"
     >
-      <div className="relative w-2/6 h-[400px]">
-        {/* CPU core with enhanced glow effect */}
+      <div
+        className={`relative w-full max-w-[800px] aspect-square ${
+          windowSize.width < 768
+            ? "scale-75"
+            : windowSize.width < 1024
+            ? "scale-90"
+            : "scale-100"
+        }`}
+      >
+        {/* CPU core with responsive sizing */}
         <div
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
-                      w-40 h-40 bg-gray-800/80 rounded-lg z-30
-                      border-2 border-cyan-400 
-                      backdrop-blur-sm overflow-hidden"
+          className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+                    ${getCpuSize()} bg-gray-800/80 rounded-lg z-30
+                    border-2 border-cyan-400 
+                    backdrop-blur-sm overflow-hidden`}
           style={{
-            boxShadow: `0 0 20px rgba(34,211,238,0.6),
-                       inset 0 0 15px rgba(34,211,238,0.3)`,
+            boxShadow: `0 0 ${20 * scale}px rgba(34,211,238,0.6),
+                     inset 0 0 ${15 * scale}px rgba(34,211,238,0.3)`,
           }}
         >
           {/* CPU Grid Pattern */}
@@ -222,24 +363,21 @@ const SkillDiagram = () => {
             ))}
           </div>
 
-          {/* CPU Label with enhanced glow */}
+          {/* CPU Label with responsive text */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center z-10">
               <span
-                className="text-3xl font-bold text-cyan-400 animate-pulse"
-                style={{ textShadow: "0 0 10px #22d3ee" }}
+                className={`${getCpuTextSize()} font-bold text-cyan-400 animate-pulse`}
+                style={{ textShadow: `0 0 ${10 * scale}px #22d3ee` }}
               >
                 SKILL
               </span>
-
-              <div className="mt-2 w-16 h-0.5 mx-auto bg-cyan-400/20 rounded-full animate-[pulse_2s_ease-in-out_infinite]" />
+              <div
+                className={`mt-2 w-${
+                  windowSize.width <= 640 ? "12" : "16"
+                } h-0.5 mx-auto bg-cyan-400/20 rounded-full animate-[pulse_2s_ease-in-out_infinite]`}
+              />
             </div>
-          </div>
-
-          {/* Heat Spreader Detail */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="absolute inset-2 border border-cyan-400/20 rounded" />
-            <div className="absolute inset-4 border border-cyan-400/15 rounded" />
           </div>
         </div>
 
@@ -260,9 +398,9 @@ const SkillDiagram = () => {
                 <motion.path
                   d={skill.path}
                   fill="none"
-                  strokeWidth="2"
+                  strokeWidth={scale * 2}
                   strokeLinecap="square"
-                  className="transition-all duration-700"
+                  className="transition-all cursor-pointer duration-700"
                   onMouseEnter={() => setHoveredSkill(skill.id)}
                   onMouseLeave={() => setHoveredSkill(null)}
                   animate={{
@@ -280,6 +418,7 @@ const SkillDiagram = () => {
                     cx={point.x}
                     cy={point.y}
                     r="4"
+                    className="cursor-pointer"
                     onMouseEnter={() => setHoveredSkill(skill.id)}
                     onMouseLeave={() => setHoveredSkill(null)}
                     animate={{
@@ -297,25 +436,48 @@ const SkillDiagram = () => {
               {index === currentAnimation && (
                 <motion.div
                   animate={controls}
-                  className="absolute w-3 h-3 rounded-full z-20"
+                  className="absolute rounded-full z-20 flex items-center justify-center"
                   initial={{ x: 0, y: 0, scale: 0, opacity: 0 }}
                   style={{
                     left: "50%",
                     top: "50%",
-                    backgroundColor: skill.color,
-                    boxShadow: `0 0 20px ${skill.glowColor}`,
+                    width: `${14 * scale}px`,
+                    height: `${14 * scale}px`,
+                    background: `radial-gradient(circle at center,
+          #ffffff 0%,
+          ${skill.color} 50%,
+          ${skill.color} 100%)`,
+                    boxShadow: `
+          0 0 ${20 * scale}px ${skill.glowColor},
+          0 0 ${10 * scale}px ${skill.color},
+          inset 0 0 ${8 * scale}px rgba(255,255,255,0.8)
+        `,
                   }}
-                />
+                >
+                  {/* Inner white glow */}
+                  <div
+                    className="absolute rounded-full"
+                    style={{
+                      width: `${12 * scale}px`,
+                      height: `${12 * scale}px`,
+                      background: `radial-gradient(circle at center,
+            rgba(255,255,255,0.9) 0%,
+            rgba(255,255,255,0.5) 50%,
+            transparent 100%)`,
+                      filter: `blur(${2 * scale}px)`,
+                    }}
+                  />
+                </motion.div>
               )}
               {/* skill icon */}
               <motion.div
                 className="absolute flex items-center justify-center rounded-lg 
-                         transition-all duration-500 cursor-pointer backdrop-blur-sm"
+                       transition-all duration-500 cursor-pointer backdrop-blur-sm"
                 style={{
-                  left: `calc(50% + ${skill.position.x}px - 32px)`,
-                  top: `calc(50% + ${skill.position.y}px - 32px)`,
-                  width: "80px",
-                  height: "80px",
+                  left: `calc(50% + ${skill.position.x}px - ${32 * scale}px)`,
+                  top: `calc(50% + ${skill.position.y}px - ${32 * scale}px)`,
+                  width: `${80 * scale}px`,
+                  height: `${80 * scale}px`,
                   background: "rgba(18, 24, 27, 0.8)",
                 }}
                 onMouseEnter={() => setHoveredSkill(skill.id)}
@@ -324,14 +486,14 @@ const SkillDiagram = () => {
                   scale: isActive || isHovered ? 1.15 : 1,
                   boxShadow:
                     isActive || isHovered
-                      ? `0 0 25px ${skill.glowColor}`
-                      : "0 0 10px rgba(0,0,0,0.3)",
+                      ? `0 0 ${25 * scale}px ${skill.glowColor}`
+                      : `0 0 ${10 * scale}px rgba(0,0,0,0.3)`,
                 }}
               >
                 <img
                   src={skill.icon}
                   alt={skill.name}
-                  className="w-16 h-16 transition-all duration-500"
+                  className="w-4/5 h-4/5 transition-all duration-500"
                   style={{
                     filter:
                       isActive || isHovered
@@ -342,8 +504,7 @@ const SkillDiagram = () => {
 
                 {(isActive || isHovered) && (
                   <motion.div
-                    className="absolute w-full h-full rounded-lg
-                             border-2 border-current"
+                    className="absolute w-full h-full rounded-lg border-2 border-current"
                     animate={{
                       opacity: [0.2, 0.5, 0.2],
                       scale: [1, 1.05, 1],
@@ -360,9 +521,9 @@ const SkillDiagram = () => {
                 {isHovered && (
                   <div
                     className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 
-                             bg-gray-800/90 px-3 py-1.5 rounded-lg text-sm text-white
-                             whitespace-nowrap border border-gray-700
-                             shadow-lg backdrop-blur-sm"
+                           bg-gray-800/90 px-3 py-1.5 rounded-lg text-sm text-white
+                           whitespace-nowrap border border-gray-700
+                           shadow-lg backdrop-blur-sm"
                   >
                     {skill.name}
                   </div>

@@ -139,8 +139,10 @@ const Hero = () => {
               Hi, I'm{" "}
               <span className="relative">
                 <span
-                  className="bg-gradient-to-r from-emerald-400 via-blue-400 to-rose-400 
-                  bg-clip-text text-transparent animate-gradient-x"
+                  className="text-black
+        [text-shadow:_0_0_5px_#fff,_0_0_10px_#fff,_0_0_20px_#fff]
+        hover:[text-shadow:_0_0_10px_#fff,_0_0_20px_#fff,_0_0_30px_#fff]
+        transition-all duration-300"
                 >
                   {typedText}
                 </span>

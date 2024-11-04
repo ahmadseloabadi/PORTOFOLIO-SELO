@@ -147,7 +147,7 @@ const Resume = () => {
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-16"
       >
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-8">
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-8 pt-20">
           My Resume
         </h1>
         <div className="flex justify-center items-center gap-24">
