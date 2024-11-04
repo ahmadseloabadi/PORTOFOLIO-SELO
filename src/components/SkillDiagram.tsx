@@ -325,7 +325,7 @@ const SkillDiagram = () => {
 
   return (
     <div
-      className="w-full min-h-screen flex items-center justify-center bg-gray-950 py-8 px-4"
+      className="w-full h-screen flex items-center justify-center bg-gray-950 py-8 px-4"
       id="Skills"
     >
       <div
