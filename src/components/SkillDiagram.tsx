@@ -66,14 +66,14 @@ const SkillDiagram = () => {
 
   // Fungsi untuk menghitung ukuran CPU core berdasarkan ukuran layar
   const getCpuSize = () => {
-    if (windowSize.width <= 640) return "w-24 h-24"; // Mobile
+    if (windowSize.width <= 640) return "w-20 h-20"; // Mobile
     if (windowSize.width <= 768) return "w-32 h-32"; // Tablet
     return "w-40 h-40"; // Desktop
   };
 
   // Fungsi untuk menghitung ukuran font CPU text berdasarkan ukuran layar
   const getCpuTextSize = () => {
-    if (windowSize.width <= 640) return "text-xl"; // Mobile
+    if (windowSize.width <= 640) return "text-lg"; // Mobile
     if (windowSize.width <= 768) return "text-2xl"; // Tablet
     return "text-3xl"; // Desktop
   };
@@ -402,9 +402,7 @@ const SkillDiagram = () => {
           return (
             <React.Fragment key={skill.id}>
               <svg
-                className="absolute top-1/2 left-1/2 transform"
-                width="full"
-                height="full"
+                className="absolute top-1/2 left-1/2 transform lg:w-fit h-fit sm:w-2/3 md:w-2/3"
                 style={{ overflow: "visible" }}
               >
                 <motion.path
@@ -538,17 +536,16 @@ const SkillDiagram = () => {
                   />
                 )}
 
-                {isHovered ||
-                  (isCpuHovered && (
-                    <div
-                      className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 
+                {(isActive || isHovered || isCpuHovered) && (
+                  <div
+                    className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 
                            bg-gray-800/90 px-3 py-1.5 rounded-lg text-sm text-white
                            whitespace-nowrap border border-gray-700
                            shadow-lg backdrop-blur-sm"
-                    >
-                      {skill.name}
-                    </div>
-                  ))}
+                  >
+                    {skill.name}
+                  </div>
+                )}
               </motion.div>
             </React.Fragment>
           );

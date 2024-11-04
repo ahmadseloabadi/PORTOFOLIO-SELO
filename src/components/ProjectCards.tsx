@@ -105,37 +105,19 @@ const ProjectCard = ({ project }) => {
 
   const TechBadge = ({ tech }) => {
     const colorMap = {
-      React: "bg-blue-400 border-blue-300",
-      "Node.js": "bg-green-400 border-green-300",
-      MongoDB: "bg-green-600 border-green-500",
-      TypeScript: "bg-blue-600 border-blue-500",
-      "Vue.js": "bg-emerald-400 border-emerald-300",
-      Python: "bg-yellow-500 border-yellow-400",
-      PostgreSQL: "bg-blue-500 border-blue-400",
-      TailwindCSS: "bg-cyan-400 border-cyan-300",
-      TensorFlow: "bg-orange-400 border-orange-300",
-
-      // Additional Technologies
-      HTML: "bg-orange-600 border-orange-500", // HTML
-      CSS: "bg-blue-500 border-blue-400", // CSS
-      Flask: "bg-gray-700 border-gray-600", // Flask
-      Streamlit: "bg-red-700 border-red-600", // Flask
-      OpenCV: "bg-purple-600 border-purple-500", // OpenCV
-      "Scikit-Learn": "bg-orange-300 border-orange-200", // Scikit-Learn
-      Keras: "bg-red-400 border-red-300", // Keras
-      PyTorch: "bg-red-500 border-red-400", // PyTorch
-      Pandas: "bg-indigo-400 border-indigo-300", // Pandas
-      NumPy: "bg-blue-300 border-blue-200", // NumPy
-      Matplotlib: "bg-blue-700 border-blue-600", // Matplotlib
-      Seaborn: "bg-teal-400 border-teal-300", // Seaborn
-      XGBoost: "bg-green-500 border-green-400", // XGBoost
-      LightGBM: "bg-lime-500 border-lime-400", // LightGBM
-      NLTK: "bg-green-400 border-green-300", // NLTK
-
-      // Newly Added
-      SVM: "bg-gray-600 border-gray-500", // SVM (Support Vector Machine)
-      HOG: "bg-pink-400 border-pink-300", // HOG (Histogram of Oriented Gradients)
-      JavaScript: "bg-yellow-400 border-yellow-300", // JavaScript
+      React: "bg-gradient-to-r from-blue-400 to-blue-300 border-blue-300",
+      TypeScript: "bg-gradient-to-r from-blue-600 to-blue-500 border-blue-500",
+      Python: "bg-gradient-to-r from-blue-700 to-blue-500 border-blue-600",
+      PostgreSQL: "bg-gradient-to-r from-blue-500 to-blue-400 border-blue-400",
+      TailwindCSS: "bg-gradient-to-r from-cyan-400 to-cyan-300 border-cyan-300",
+      HTML: "bg-gradient-to-r from-orange-600 to-orange-500 border-orange-500",
+      CSS: "bg-gradient-to-r from-blue-500 to-blue-400 border-blue-400",
+      Flask: "bg-gradient-to-r from-gray-700 to-gray-600 border-gray-600",
+      Streamlit: "bg-gradient-to-r from-red-700 to-red-600 border-red-600",
+      SVM: "bg-gradient-to-r from-gray-600 to-gray-500 border-gray-500",
+      HOG: "bg-gradient-to-r from-pink-400 to-pink-300 border-pink-300",
+      JavaScript:
+        "bg-gradient-to-r from-yellow-400 to-yellow-300 border-yellow-300",
     };
 
     return (
