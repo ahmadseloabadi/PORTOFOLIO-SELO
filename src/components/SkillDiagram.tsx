@@ -13,6 +13,7 @@ const SkillDiagram = () => {
     width: typeof window !== "undefined" ? window.innerWidth : 0,
     height: typeof window !== "undefined" ? window.innerHeight : 0,
   });
+  const isMobile = windowSize.width <= 640;
 
   // Fungsi untuk menghitung skala berdasarkan ukuran layar dan orientasi
   const calculateScale = () => {
@@ -23,8 +24,8 @@ const SkillDiagram = () => {
     if (windowSize.width <= 640) {
       // Mobile
       scale = isPortrait
-        ? Math.min(windowSize.width / (baseWidth * 0.4), 0.3)
-        : Math.min(windowSize.width / (baseWidth * 0.6), 0.4);
+        ? Math.min(windowSize.height / (baseWidth * 0.8), 0.35)
+        : Math.min(windowSize.width / (baseWidth * 0.6), 0.35);
     } else if (windowSize.width <= 768) {
       // Tablet
       scale = isPortrait
@@ -82,51 +83,94 @@ const SkillDiagram = () => {
     {
       id: "js",
       name: "JavaScript",
-      position: { x: -580 * scale, y: -200 * scale },
+      position: isMobile
+        ? { x: -200 * scale, y: -580 * scale }
+        : { x: -580 * scale, y: -200 * scale },
       color: "#F7DF1E",
       glowColor: "rgba(247, 223, 30, 0.6)",
-      path: `M${-50 * scale},0 L${-50 * scale},${-250 * scale} L${
-        -200 * scale
-      },${-250 * scale} L${-200 * scale},${-150 * scale} L${-400 * scale},${
-        -150 * scale
-      } L${-400 * scale},${-300 * scale} L${-570 * scale},${-300 * scale} L${
-        -570 * scale
-      },${-200 * scale}`,
-      pathPoints: [
-        { x: -50 * scale, y: 0 },
-        { x: -50 * scale, y: -250 * scale },
-        { x: -200 * scale, y: -250 * scale },
-        { x: -200 * scale, y: -150 * scale },
-        { x: -400 * scale, y: -150 * scale },
-        { x: -400 * scale, y: -300 * scale },
-        { x: -570 * scale, y: -300 * scale },
-        { x: -570 * scale, y: -200 * scale },
-      ],
+      path: isMobile
+        ? `M0,${-50 * scale} L${-250 * scale},${-50 * scale} L${-250 * scale},${
+            -200 * scale
+          } L${-150 * scale},${-200 * scale} L${-150 * scale},${
+            -400 * scale
+          } L${-300 * scale},${-400 * scale} L${-300 * scale},${
+            -570 * scale
+          } L${-200 * scale},${-570 * scale}`
+        : `M${-50 * scale},0 L${-50 * scale},${-250 * scale} L${-200 * scale},${
+            -250 * scale
+          } L${-200 * scale},${-150 * scale} L${-400 * scale},${
+            -150 * scale
+          } L${-400 * scale},${-300 * scale} L${-570 * scale},${
+            -300 * scale
+          } L${-570 * scale},${-200 * scale}`,
+      pathPoints: isMobile
+        ? [
+            { x: 0, y: -50 * scale },
+            { x: -250 * scale, y: -50 * scale },
+            { x: -250 * scale, y: -200 * scale },
+            { x: -150 * scale, y: -200 * scale },
+            { x: -150 * scale, y: -400 * scale },
+            { x: -300 * scale, y: -400 * scale },
+            { x: -300 * scale, y: -570 * scale },
+            { x: -200 * scale, y: -570 * scale },
+          ]
+        : [
+            { x: -50 * scale, y: 0 },
+            { x: -50 * scale, y: -250 * scale },
+            { x: -200 * scale, y: -250 * scale },
+            { x: -200 * scale, y: -150 * scale },
+            { x: -400 * scale, y: -150 * scale },
+            { x: -400 * scale, y: -300 * scale },
+            { x: -570 * scale, y: -300 * scale },
+            { x: -570 * scale, y: -200 * scale },
+          ],
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
     },
+    // Similar modifications for other skills...
     {
       id: "python",
       name: "Python",
-      position: { x: 560 * scale, y: -200 * scale },
+      position: isMobile
+        ? { x: 200 * scale, y: -580 * scale }
+        : { x: 560 * scale, y: -200 * scale },
       color: "#3776AB",
       glowColor: "rgba(55, 118, 171, 0.6)",
-      path: `M${50 * scale},0 L${50 * scale},${-250 * scale} L${200 * scale},${
-        -250 * scale
-      } L${200 * scale},${-150 * scale} L${400 * scale},${-150 * scale} L${
-        400 * scale
-      },${-300 * scale} L${570 * scale},${-300 * scale} L${570 * scale},${
-        -200 * scale
-      }`,
-      pathPoints: [
-        { x: 50 * scale, y: 0 },
-        { x: 50 * scale, y: -250 * scale },
-        { x: 200 * scale, y: -250 * scale },
-        { x: 200 * scale, y: -150 * scale },
-        { x: 400 * scale, y: -150 * scale },
-        { x: 400 * scale, y: -300 * scale },
-        { x: 570 * scale, y: -300 * scale },
-        { x: 570 * scale, y: -200 * scale },
-      ],
+      path: isMobile
+        ? `M0,${-50 * scale} L${250 * scale},${-50 * scale} L${250 * scale},${
+            -200 * scale
+          } L${150 * scale},${-200 * scale} L${150 * scale},${-400 * scale} L${
+            300 * scale
+          },${-400 * scale} L${300 * scale},${-570 * scale} L${200 * scale},${
+            -570 * scale
+          }`
+        : `M${50 * scale},0 L${50 * scale},${-250 * scale} L${200 * scale},${
+            -250 * scale
+          } L${200 * scale},${-150 * scale} L${400 * scale},${-150 * scale} L${
+            400 * scale
+          },${-300 * scale} L${570 * scale},${-300 * scale} L${570 * scale},${
+            -200 * scale
+          }`,
+      pathPoints: isMobile
+        ? [
+            { x: 0, y: -50 * scale },
+            { x: 250 * scale, y: -50 * scale },
+            { x: 250 * scale, y: -200 * scale },
+            { x: 150 * scale, y: -200 * scale },
+            { x: 150 * scale, y: -400 * scale },
+            { x: 300 * scale, y: -400 * scale },
+            { x: 300 * scale, y: -570 * scale },
+            { x: 200 * scale, y: -570 * scale },
+          ]
+        : [
+            { x: 50 * scale, y: 0 },
+            { x: 50 * scale, y: -250 * scale },
+            { x: 200 * scale, y: -250 * scale },
+            { x: 200 * scale, y: -150 * scale },
+            { x: 400 * scale, y: -150 * scale },
+            { x: 400 * scale, y: -300 * scale },
+            { x: 570 * scale, y: -300 * scale },
+            { x: 570 * scale, y: -200 * scale },
+          ],
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
     },
     {
@@ -135,26 +179,43 @@ const SkillDiagram = () => {
       position: { x: -625 * scale, y: 0 },
       color: "#E34F26",
       glowColor: "rgba(227, 79, 38, 0.6)",
-      path: `M0,0 L${-200 * scale},0 L${-200 * scale},${-100 * scale} L${
-        -400 * scale
-      },${-100 * scale} L${-400 * scale},0 L${-300 * scale},0 L${
-        -300 * scale
-      },${100 * scale} L${-500 * scale},${100 * scale} L${-500 * scale},${
-        10 * scale
-      } L${-550 * scale},${10 * scale} L${-625 * scale},${10 * scale}`,
-      pathPoints: [
-        { x: 0, y: 0 },
-        { x: -200 * scale, y: 0 },
-        { x: -200 * scale, y: -100 * scale },
-        { x: -400 * scale, y: -100 * scale },
-        { x: -400 * scale, y: 0 },
-        { x: -300 * scale, y: 0 },
-        { x: -300 * scale, y: 100 * scale },
-        { x: -500 * scale, y: 100 * scale },
-        { x: -500 * scale, y: 10 * scale },
-        { x: -550 * scale, y: 10 * scale },
-        { x: -625 * scale, y: 10 * scale },
-      ],
+      path: isMobile
+        ? `M0,0 L${-250 * scale},0 L${-350 * scale},0 L${-350 * scale},${
+            -100 * scale
+          } L${-450 * scale},${-100 * scale} L${-450 * scale},${100 * scale} L${
+            -550 * scale
+          },${100 * scale} L${-550 * scale},0`
+        : `M0,0 L${-200 * scale},0 L${-200 * scale},${-100 * scale} L${
+            -400 * scale
+          },${-100 * scale} L${-400 * scale},0 L${-300 * scale},0 L${
+            -300 * scale
+          },${100 * scale} L${-500 * scale},${100 * scale} L${-500 * scale},${
+            10 * scale
+          } L${-550 * scale},${10 * scale} L${-625 * scale},${10 * scale}`,
+      pathPoints: isMobile
+        ? [
+            { x: 0, y: 0 },
+            { x: -250 * scale, y: 0 },
+            { x: -350 * scale, y: 0 },
+            { x: -350 * scale, y: -100 * scale },
+            { x: -450 * scale, y: -100 * scale },
+            { x: -450 * scale, y: 100 * scale },
+            { x: -550 * scale, y: 100 * scale },
+            { x: -550 * scale, y: 0 * scale },
+          ]
+        : [
+            { x: 0, y: 0 },
+            { x: -200 * scale, y: 0 },
+            { x: -200 * scale, y: -100 * scale },
+            { x: -400 * scale, y: -100 * scale },
+            { x: -400 * scale, y: 0 },
+            { x: -300 * scale, y: 0 },
+            { x: -300 * scale, y: 100 * scale },
+            { x: -500 * scale, y: 100 * scale },
+            { x: -500 * scale, y: 10 * scale },
+            { x: -550 * scale, y: 10 * scale },
+            { x: -625 * scale, y: 10 * scale },
+          ],
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
     },
     {
@@ -163,77 +224,135 @@ const SkillDiagram = () => {
       position: { x: 610 * scale, y: 0 },
       color: "#1572B6",
       glowColor: "rgba(21, 114, 182, 0.6)",
-      path: `M0,0 L${200 * scale},0 L${200 * scale},${-100 * scale} L${
-        400 * scale
-      },${-100 * scale} L${400 * scale},0 L${300 * scale},0 L${300 * scale},${
-        100 * scale
-      } L${500 * scale},${100 * scale} L${500 * scale},${10 * scale} L${
-        560 * scale
-      },${10 * scale} L${610 * scale},${10 * scale}`,
-      pathPoints: [
-        { x: 0, y: 0 },
-        { x: 200 * scale, y: 0 },
-        { x: 200 * scale, y: -100 * scale },
-        { x: 400 * scale, y: -100 * scale },
-        { x: 400 * scale, y: 0 },
-        { x: 300 * scale, y: 0 },
-        { x: 300 * scale, y: 100 * scale },
-        { x: 500 * scale, y: 100 * scale },
-        { x: 500 * scale, y: 10 * scale },
-        { x: 560 * scale, y: 10 * scale },
-        { x: 610 * scale, y: 10 * scale },
-      ],
+      path: isMobile
+        ? `M0,0 L${250 * scale},0 L${350 * scale},0 L${350 * scale},${
+            -100 * scale
+          } L${450 * scale},${-100 * scale} L${450 * scale},${100 * scale} L${
+            550 * scale
+          },${100 * scale} L${550 * scale},0`
+        : `M0,0 L${200 * scale},0 L${200 * scale},${-100 * scale} L${
+            400 * scale
+          },${-100 * scale} L${400 * scale},0 L${300 * scale},0 L${
+            300 * scale
+          },${100 * scale} L${500 * scale},${100 * scale} L${500 * scale},${
+            10 * scale
+          } L${560 * scale},${10 * scale} L${610 * scale},${10 * scale}`,
+      pathPoints: isMobile
+        ? [
+            { x: 0, y: 0 },
+            { x: 250 * scale, y: 0 },
+            { x: 350 * scale, y: 0 },
+            { x: 350 * scale, y: -100 * scale },
+            { x: 450 * scale, y: -100 * scale },
+            { x: 450 * scale, y: 100 * scale },
+            { x: 550 * scale, y: 100 * scale },
+            { x: 550 * scale, y: 0 * scale },
+          ]
+        : [
+            { x: 0, y: 0 },
+            { x: 200 * scale, y: 0 },
+            { x: 200 * scale, y: -100 * scale },
+            { x: 400 * scale, y: -100 * scale },
+            { x: 400 * scale, y: 0 },
+            { x: 300 * scale, y: 0 },
+            { x: 300 * scale, y: 100 * scale },
+            { x: 500 * scale, y: 100 * scale },
+            { x: 500 * scale, y: 10 * scale },
+            { x: 560 * scale, y: 10 * scale },
+            { x: 610 * scale, y: 10 * scale },
+          ],
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
     },
     {
       id: "react",
       name: "React",
-      position: { x: -580 * scale, y: 200 * scale },
+      position: isMobile
+        ? { x: -200 * scale, y: 580 * scale }
+        : { x: -580 * scale, y: 200 * scale },
       color: "#61DAFB",
       glowColor: "rgba(97, 218, 251, 0.6)",
-      path: `M${-50 * scale},0 L${-50 * scale},${250 * scale} L${
-        -200 * scale
-      },${250 * scale} L${-200 * scale},${150 * scale} L${-400 * scale},${
-        150 * scale
-      } L${-400 * scale},${330 * scale} L${-570 * scale},${330 * scale} L${
-        -570 * scale
-      },${270 * scale} L${-570 * scale},${200 * scale}`,
-      pathPoints: [
-        { x: -50 * scale, y: 0 },
-        { x: -50 * scale, y: 250 * scale },
-        { x: -200 * scale, y: 250 * scale },
-        { x: -200 * scale, y: 150 * scale },
-        { x: -400 * scale, y: 150 * scale },
-        { x: -400 * scale, y: 330 * scale },
-        { x: -570 * scale, y: 330 * scale },
-        { x: -570 * scale, y: 270 * scale },
-        { x: -570 * scale, y: 200 * scale },
-      ],
+      path: isMobile
+        ? `M0,${50 * scale} L${-250 * scale},${50 * scale} L${-250 * scale},${
+            200 * scale
+          } L${-150 * scale},${200 * scale} L${-150 * scale},${400 * scale} L${
+            -300 * scale
+          },${400 * scale} L${-300 * scale},${570 * scale} L${-200 * scale},${
+            570 * scale
+          }`
+        : `M${-50 * scale},0 L${-50 * scale},${250 * scale} L${-200 * scale},${
+            250 * scale
+          } L${-200 * scale},${150 * scale} L${-400 * scale},${150 * scale} L${
+            -400 * scale
+          },${330 * scale} L${-570 * scale},${330 * scale} L${-570 * scale},${
+            270 * scale
+          }`,
+      pathPoints: isMobile
+        ? [
+            { x: 0, y: 50 * scale },
+            { x: -250 * scale, y: 50 * scale },
+            { x: -250 * scale, y: 200 * scale },
+            { x: -150 * scale, y: 200 * scale },
+            { x: -150 * scale, y: 400 * scale },
+            { x: -300 * scale, y: 400 * scale },
+            { x: -300 * scale, y: 570 * scale },
+            { x: -200 * scale, y: 570 * scale },
+          ]
+        : [
+            { x: -50 * scale, y: 0 },
+            { x: -50 * scale, y: 250 * scale },
+            { x: -200 * scale, y: 250 * scale },
+            { x: -200 * scale, y: 150 * scale },
+            { x: -400 * scale, y: 150 * scale },
+            { x: -400 * scale, y: 330 * scale },
+            { x: -570 * scale, y: 330 * scale },
+            { x: -570 * scale, y: 270 * scale },
+          ],
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
     },
     {
       id: "sql",
-      name: "sql",
-      position: { x: 560 * scale, y: 200 * scale },
+      name: "SQL",
+      position: isMobile
+        ? { x: 200 * scale, y: 580 * scale }
+        : { x: 560 * scale, y: 200 * scale },
       color: "#028DF8",
       glowColor: "rgba(56, 178, 172, 0.6)",
-      path: `M${50 * scale},0 L${50 * scale},${250 * scale} L${200 * scale},${
-        250 * scale
-      } L${200 * scale},${150 * scale} L${400 * scale},${150 * scale} L${
-        400 * scale
-      },${330 * scale} L${570 * scale},${330 * scale} L${570 * scale},${
-        270 * scale
-      } L${570 * scale},${200 * scale}`,
-      pathPoints: [
-        { x: 50 * scale, y: 0 },
-        { x: 50 * scale, y: 250 * scale },
-        { x: 200 * scale, y: 250 * scale },
-        { x: 200 * scale, y: 150 * scale },
-        { x: 400 * scale, y: 150 * scale },
-        { x: 400 * scale, y: 330 * scale },
-        { x: 570 * scale, y: 330 * scale },
-        { x: 570 * scale, y: 270 * scale },
-      ],
+      path: isMobile
+        ? `M0,${50 * scale} L${250 * scale},${50 * scale} L${250 * scale},${
+            200 * scale
+          } L${150 * scale},${200 * scale} L${150 * scale},${400 * scale} L${
+            300 * scale
+          },${400 * scale} L${300 * scale},${570 * scale} L${200 * scale},${
+            570 * scale
+          }`
+        : `M${50 * scale},0 L${50 * scale},${250 * scale}L${200 * scale},${
+            250 * scale
+          } L${200 * scale},${150 * scale} L${400 * scale},${150 * scale} L${
+            400 * scale
+          },${330 * scale} L${570 * scale},${330 * scale} L${570 * scale},${
+            270 * scale
+          } L${570 * scale},${200 * scale}`,
+      pathPoints: isMobile
+        ? [
+            { x: 0, y: 50 * scale },
+            { x: 250 * scale, y: 50 * scale },
+            { x: 250 * scale, y: 200 * scale },
+            { x: 150 * scale, y: 200 * scale },
+            { x: 150 * scale, y: 400 * scale },
+            { x: 300 * scale, y: 400 * scale },
+            { x: 300 * scale, y: 570 * scale },
+            { x: 200 * scale, y: 570 * scale },
+          ]
+        : [
+            { x: 50 * scale, y: 0 },
+            { x: 50 * scale, y: 250 * scale },
+            { x: 200 * scale, y: 250 * scale },
+            { x: 200 * scale, y: 150 * scale },
+            { x: 400 * scale, y: 150 * scale },
+            { x: 400 * scale, y: 330 * scale },
+            { x: 570 * scale, y: 330 * scale },
+            { x: 570 * scale, y: 270 * scale },
+          ],
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg",
     },
   ];
