@@ -29,7 +29,7 @@ const SkillDiagram = () => {
       // Tablet
       scale = isPortrait
         ? Math.min(windowSize.width / (baseWidth * 0.5), 0.4)
-        : Math.min(windowSize.width / (baseWidth * 0.7), 0.5);
+        : Math.min(windowSize.width / (baseWidth * 0.7), 0.6);
     } else if (windowSize.width <= 1024) {
       // Small laptop
       scale = Math.min(windowSize.width / (baseWidth * 0.8), 0.7);
@@ -67,7 +67,7 @@ const SkillDiagram = () => {
   // Fungsi untuk menghitung ukuran CPU core berdasarkan ukuran layar
   const getCpuSize = () => {
     if (windowSize.width <= 640) return "w-20 h-20"; // Mobile
-    if (windowSize.width <= 768) return "w-32 h-32"; // Tablet
+    if (windowSize.width <= 768) return "w-28 h-28"; // Tablet
     return "w-40 h-40"; // Desktop
   };
 
@@ -402,7 +402,7 @@ const SkillDiagram = () => {
           return (
             <React.Fragment key={skill.id}>
               <svg
-                className="absolute top-1/2 left-1/2 transform lg:w-fit h-fit sm:w-2/3 md:w-2/3"
+                className="absolute top-1/2 left-1/2 transform w-fit h-fit "
                 style={{ overflow: "visible" }}
               >
                 <motion.path
@@ -410,7 +410,7 @@ const SkillDiagram = () => {
                   fill="none"
                   strokeWidth={scale * 2}
                   strokeLinecap="square"
-                  className="transition-all cursor-pointer duration-700"
+                  className="transition-all cursor-pointer duration-700 w-fit h-fit"
                   onMouseEnter={() => setHoveredSkill(skill.id)}
                   onMouseLeave={() => setHoveredSkill(null)}
                   animate={{
@@ -432,7 +432,7 @@ const SkillDiagram = () => {
                     cx={point.x}
                     cy={point.y}
                     r="4"
-                    className="cursor-pointer"
+                    className="cursor-pointer "
                     onMouseEnter={() => setHoveredSkill(skill.id)}
                     onMouseLeave={() => setHoveredSkill(null)}
                     animate={{
@@ -494,8 +494,8 @@ const SkillDiagram = () => {
                 style={{
                   left: `calc(50% + ${skill.position.x}px - ${32 * scale}px)`,
                   top: `calc(50% + ${skill.position.y}px - ${32 * scale}px)`,
-                  width: `${80 * scale}px`,
-                  height: `${80 * scale}px`,
+                  width: `${90 * scale}px`,
+                  height: `${90 * scale}px`,
                   background: "rgba(18, 24, 27, 0.8)",
                 }}
                 onMouseEnter={() => setHoveredSkill(skill.id)}
