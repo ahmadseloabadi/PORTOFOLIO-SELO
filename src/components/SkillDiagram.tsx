@@ -42,7 +42,7 @@ const SkillDiagram = () => {
 
   // Update ukuran window saat resize dengan debounce
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
+    let timeoutId: ReturnType<typeof setTimeout>;
 
     const handleResize = () => {
       clearTimeout(timeoutId);
