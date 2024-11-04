@@ -46,7 +46,9 @@ const Contact = () => {
           import.meta.env.VITE_APP_SERVICE_ID_EMAILJS || "",
           import.meta.env.VITE_APP_TEMPLATE_ID_EMAILJS || "",
           templateParams,
-          import.meta.env.VITE_APP_USER_ID_EMAILJS || "" // Ganti dengan User ID EmailJS Anda
+          {
+            publicKey: import.meta.env.VITE_APP_USER_ID_EMAILJS || "",
+          }
         )
         .then(
           (response) => {
@@ -207,7 +209,7 @@ const Contact = () => {
               </button>
             </div>
             {errMsg || successMsg ? (
-              <p className="py-3 bg-slate-950 text-center text-orange-500 rounded-lg shadow-lg shadow-black text-base tracking-wide animate-bounce">
+              <p className="py-3 bg-slate-950 text-center text-orange-500 rounded-lg shadow-lg shadow-black md:text-base text-sm tracking-wide animate-bounce">
                 {errMsg} {successMsg}
               </p>
             ) : (

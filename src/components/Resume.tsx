@@ -60,7 +60,7 @@ const TimelineCard = ({
       `}
     >
       {/* Mobile Timeline Elements */}
-      <div className="md:hidden flex items-center absolute left-4 top-6">
+      <div className="md:hidden flex items-center absolute left-4 top-20">
         <ConnectorLine isLeft={isLeft} isMobile={true} />
       </div>
 
@@ -151,7 +151,7 @@ const Resume = () => {
           My Resume
         </h1>
         <div className="flex justify-center items-center gap-24">
-          <span className="hidden md:block bg-gradient-to-r from-cyan-400 to-fuchsia-400 font-semibold text-lg text-transparent bg-clip-text">
+          <span className=" md:block bg-gradient-to-r from-cyan-400 to-fuchsia-400 font-semibold text-lg text-transparent bg-clip-text">
             Job Experience & Education
           </span>
         </div>
