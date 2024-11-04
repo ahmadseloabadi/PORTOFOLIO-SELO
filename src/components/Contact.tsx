@@ -41,12 +41,12 @@ const Contact = () => {
       };
 
       // Mengirim email menggunakan EmailJS
-      emailjs.init(import.meta.env.VITE_APP_PUBLIC_KEY_EMAILJS || "");
       emailjs
         .send(
           import.meta.env.VITE_APP_SERVICE_ID_EMAILJS || "",
           import.meta.env.VITE_APP_TEMPLATE_ID_EMAILJS || "",
-          templateParams
+          templateParams,
+          import.meta.env.VITE_APP_PUBLIC_KEY_EMAILJS || ""
         )
         .then(
           (response) => {
