@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 
 const Contact = () => {
@@ -68,19 +68,29 @@ const Contact = () => {
         );
     }
   };
+  useEffect(() => {
+    // Set a timer to clear messages after 3 seconds (3000 milliseconds)
+    const timer = setTimeout(() => {
+      setErrMsg("");
+      setSuccessMsg("");
+    }, 5000);
+
+    // Clear timer if component unmounts or messages change before timeout
+    return () => clearTimeout(timer);
+  }, [errMsg, successMsg]);
   return (
     <div
       id="contact"
       className="w-full py-20 border-b-[1px] border-b-black bg-gray-950"
     >
-      <div className="w-full h-auto flex flex-col lg:flex-row justify-around">
+      <div className="lg:w-full h-auto flex flex-col lg:place-items-start  place-items-center  lg:gap-0 gap-12 lg:flex-row lg:justify-around">
         {/* left contact */}
-        <div className="z-10 w-full lg:w-2/6 h-full shadow-[8px_8px_15px_-2px_#000000,-6px_-6px_15px_-6px_#ffffff]  bg-gradient-to-r from-gray-900 to-gray-800 p-4 lg:p-8 rounded-lg flex flex-col gap-8 justify-center">
+        <div className="z-10 lg:w-2/6 md:w-4/6 w-5/6  h-full shadow-[8px_8px_15px_-2px_#000000,-6px_-6px_15px_-6px_#ffffff]  bg-gradient-to-r from-gray-900 to-gray-800 p-4 lg:p-8 rounded-lg flex flex-col gap-8 justify-center">
           <div className=" w-full h-full flex justify-center">
             <div className=" h-64 w-64 rounded-full bg-blue-950 overflow-hidden shadow-[10px_10px_12px_-6px_#000000,-4px_-4px_15px_-6px_#ffffff]">
               <img
                 className="w-full h-full object-contain rounded-lg mb-2 scale-125  translate-y-6"
-                src="public\assets\pas_foto.png"
+                src="/assets/pas_foto.png"
                 alt="contactImg"
               />
             </div>
@@ -111,10 +121,10 @@ const Contact = () => {
         {/* end left contact */}
 
         {/* right contact */}
-        <div className="z-10 w-full lg:w-3/6 h-full bg-gradient-to-r from-gray-900 to-gray-800 flex flex-col gap-8   lg:p-8 rounded-lg shadow-[8px_8px_15px_-2px_#000000,-6px_-6px_15px_-6px_#ffffff]">
+        <div className="z-10 lg:w-3/6  w-[90%]  h-full place-items-center  bg-gradient-to-r from-gray-900 to-gray-800 flex flex-col gap-8   lg:p-8 rounded-lg shadow-[8px_8px_15px_-2px_#000000,-6px_-6px_15px_-6px_#ffffff]">
           <form
             onSubmit={handleSend}
-            className="w-full flex flex-col gap-4 lg:gap-6 py-2 lg:py-5"
+            className="lg:w-full flex flex-col gap-4 lg:gap-6 py-2 lg:py-5 w-5/6"
           >
             {errMsg || successMsg ? (
               <p className="  py-3 bg-gradient-to-r from-gray-900 to-gray-800 text-center text-orange-500 rounded-lg shadow-lg shadow-black text-base tracking-wide animate-bounce">
