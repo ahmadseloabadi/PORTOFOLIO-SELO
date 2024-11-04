@@ -24,7 +24,7 @@ const SkillDiagram = () => {
     if (windowSize.width <= 640) {
       // Mobile
       scale = isPortrait
-        ? Math.min(windowSize.height / (baseWidth * 0.8), 0.35)
+        ? Math.min(windowSize.height / (baseWidth * 0.6), 0.33)
         : Math.min(windowSize.width / (baseWidth * 0.6), 0.35);
     } else if (windowSize.width <= 768) {
       // Tablet
@@ -126,7 +126,6 @@ const SkillDiagram = () => {
           ],
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
     },
-    // Similar modifications for other skills...
     {
       id: "python",
       name: "Python",
@@ -520,55 +519,54 @@ const SkillDiagram = () => {
 
           return (
             <React.Fragment key={skill.id}>
-              <svg
-                className="absolute top-1/2 left-1/2 transform w-fit h-fit "
-                style={{ overflow: "visible" }}
-              >
-                <motion.path
-                  d={skill.path}
-                  fill="none"
-                  strokeWidth={scale * 2}
-                  strokeLinecap="square"
-                  className="transition-all cursor-pointer duration-700 w-fit h-fit"
-                  onMouseEnter={() => setHoveredSkill(skill.id)}
-                  onMouseLeave={() => setHoveredSkill(null)}
-                  animate={{
-                    stroke:
-                      isLineActive || isHovered || isCpuHovered
-                        ? skill.color
-                        : "#1f2937",
-                    filter:
-                      isLineActive || isHovered || isCpuHovered
-                        ? `drop-shadow(0 0 8px ${skill.glowColor})`
-                        : "none",
-                    opacity:
-                      isLineActive || isHovered || isCpuHovered ? 1 : 0.3,
-                  }}
-                />
-                {skill.pathPoints.map((point, i) => (
-                  <motion.circle
-                    key={i}
-                    cx={point.x}
-                    cy={point.y}
-                    r="4"
-                    className="cursor-pointer "
+              <div className="absolute top-1/2 left-1/2 transform h-fit w-fit">
+                <svg className="" style={{ overflow: "visible" }} width="w-fit">
+                  <motion.path
+                    d={skill.path}
+                    fill="none"
+                    strokeWidth={scale * 2}
+                    strokeLinecap="square"
+                    className="transition-all cursor-pointer duration-700 "
                     onMouseEnter={() => setHoveredSkill(skill.id)}
                     onMouseLeave={() => setHoveredSkill(null)}
                     animate={{
-                      fill:
+                      stroke:
                         isLineActive || isHovered || isCpuHovered
                           ? skill.color
                           : "#1f2937",
                       filter:
                         isLineActive || isHovered || isCpuHovered
-                          ? `drop-shadow(0 0 5px ${skill.glowColor})`
+                          ? `drop-shadow(0 0 8px ${skill.glowColor})`
                           : "none",
                       opacity:
                         isLineActive || isHovered || isCpuHovered ? 1 : 0.3,
                     }}
                   />
-                ))}
-              </svg>
+                  {skill.pathPoints.map((point, i) => (
+                    <motion.circle
+                      key={i}
+                      cx={point.x}
+                      cy={point.y}
+                      r="4"
+                      className="cursor-pointer w-fit"
+                      onMouseEnter={() => setHoveredSkill(skill.id)}
+                      onMouseLeave={() => setHoveredSkill(null)}
+                      animate={{
+                        fill:
+                          isLineActive || isHovered || isCpuHovered
+                            ? skill.color
+                            : "#1f2937",
+                        filter:
+                          isLineActive || isHovered || isCpuHovered
+                            ? `drop-shadow(0 0 5px ${skill.glowColor})`
+                            : "none",
+                        opacity:
+                          isLineActive || isHovered || isCpuHovered ? 1 : 0.3,
+                      }}
+                    />
+                  ))}
+                </svg>
+              </div>
               {/* circle animation */}
               {index === currentAnimation && (
                 <motion.div
@@ -613,8 +611,8 @@ const SkillDiagram = () => {
                 style={{
                   left: `calc(50% + ${skill.position.x}px - ${32 * scale}px)`,
                   top: `calc(50% + ${skill.position.y}px - ${32 * scale}px)`,
-                  width: `${90 * scale}px`,
-                  height: `${90 * scale}px`,
+                  width: `${100 * scale}px`,
+                  height: `${100 * scale}px`,
                   background: "rgba(18, 24, 27, 0.8)",
                 }}
                 onMouseEnter={() => setHoveredSkill(skill.id)}

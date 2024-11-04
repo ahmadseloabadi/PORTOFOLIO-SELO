@@ -7,7 +7,7 @@ import SkillDiagram from "../components/SkillDiagram";
 
 export default function Index() {
   return (
-    <div className="grid min-h-screen w-full">
+    <div className="grid min-h-screen min-w-screen">
       <Navbar />
       <Hero />
 
