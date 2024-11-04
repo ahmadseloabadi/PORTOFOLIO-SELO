@@ -40,7 +40,7 @@ const SkillDiagram = () => {
     return Math.max(scale, 0.25); // Minimal skala 0.25
   };
 
-  // Update ukuran window saat resize dengan debounce
+  // Update ukuran window saat resize menggunakan debounce
   useEffect(() => {
     let timeoutId: ReturnType<typeof setTimeout>;
 
