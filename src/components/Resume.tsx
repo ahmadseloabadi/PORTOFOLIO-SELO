@@ -60,7 +60,7 @@ const TimelineCard = ({
       `}
     >
       {/* Mobile Timeline Elements */}
-      <div className="md:hidden flex items-center absolute left-0 top-6">
+      <div className="md:hidden flex items-center absolute left-4 top-6">
         <ConnectorLine isLeft={isLeft} isMobile={true} />
       </div>
 
@@ -83,7 +83,7 @@ const TimelineCard = ({
           transition: { duration: 0.3 },
         }}
         className={`
-          relative bg-gray-900 p-12 rounded-lg
+          relative bg-gray-900 p-10 my-2 rounded-lg
           border ${borderColor}
           hover:${borderColor}
           backdrop-blur-sm
@@ -161,7 +161,7 @@ const Resume = () => {
       <div className="relative max-w-5xl mx-auto">
         {/* Mobile Timeline Line */}
         <div
-          className="absolute left-[7px] top-0 bottom-0 w-[2px] 
+          className="absolute left-[12px]  top-0 bottom-0 w-[4px] 
           bg-gradient-to-b from-cyan-500 via-fuchsia-500 to-cyan-500 
           opacity-50 md:hidden"
         />
