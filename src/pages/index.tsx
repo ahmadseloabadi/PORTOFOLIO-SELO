@@ -1,3 +1,4 @@
+import Contact from "../components/Contact";
 import Hero from "../components/Hero";
 import Navbar from "../components/Navbar";
 import ProjectCards from "../components/ProjectCards";
@@ -13,6 +14,7 @@ export default function Index() {
       <ProjectCards />
       <SkillDiagram />
       <Resume />
+      <Contact />
     </div>
   );
 }

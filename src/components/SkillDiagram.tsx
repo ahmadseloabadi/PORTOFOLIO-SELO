@@ -520,7 +520,7 @@ const SkillDiagram = () => {
           return (
             <React.Fragment key={skill.id}>
               <div className="absolute top-1/2 left-1/2 transform h-fit w-fit">
-                <svg className="" style={{ overflow: "visible" }} width="w-fit">
+                <svg className="" style={{ overflow: "visible" }}>
                   <motion.path
                     d={skill.path}
                     fill="none"

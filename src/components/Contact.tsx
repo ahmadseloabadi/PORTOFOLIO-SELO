@@ -1,0 +1,214 @@
+import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
+
+const Contact = () => {
+  const [username, setUsername] = useState<string>("");
+  const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [subject, setSubject] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
+  const [errMsg, setErrMsg] = useState<string>("");
+  const [successMsg, setSuccessMsg] = useState<string>("");
+  // ========== Email Validation start here ==============
+  const emailValidation = (email: string) => {
+    return String(email)
+      .toLocaleLowerCase()
+      .match(/^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/);
+  };
+  // ========== Email Validation end here ================
+
+  const handleSend = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (username === "") {
+      setErrMsg("Username is required!");
+    } else if (phoneNumber === "") {
+      setErrMsg("Phone number is required!");
+    } else if (email === "") {
+      setErrMsg("Please give your Email!");
+    } else if (!emailValidation(email)) {
+      setErrMsg("Give a valid Email!");
+    } else if (subject === "") {
+      setErrMsg("Plese give your Subject!");
+    } else if (message === "") {
+      setErrMsg("Message is required!");
+    } else {
+      const templateParams = {
+        username: username,
+        phoneNumber: phoneNumber,
+        email: email,
+        subject: subject,
+        message: message,
+      };
+
+      // Mengirim email menggunakan EmailJS
+      emailjs
+        .send(
+          import.meta.env.VITE_APP_SERVICE_ID_EMAILJS || "",
+          import.meta.env.VITE_APP_TEMPLATE_ID_EMAILJS || "",
+          templateParams,
+          import.meta.env.VITE_APP_USER_ID_EMAILJS || "" // Ganti dengan User ID EmailJS Anda
+        )
+        .then(
+          (response) => {
+            setSuccessMsg(
+              `Thank you dear ${username}, Your Messages has been sent Successfully!`
+            );
+            setErrMsg("");
+            setUsername("");
+            setPhoneNumber("");
+            setEmail("");
+            setSubject("");
+            setMessage("");
+            console.log("SUCCESS!", response.status, response.text);
+          },
+          (error) => {
+            setErrMsg("Failed to send message. Please try again later.");
+            console.log("FAILED...", error);
+          }
+        );
+    }
+  };
+  return (
+    <div
+      id="contact"
+      className="w-full py-20 border-b-[1px] border-b-black bg-gray-950"
+    >
+      <div className="w-full h-auto flex flex-col lg:flex-row justify-around">
+        {/* left contact */}
+        <div className="z-10 w-full lg:w-2/6 h-full shadow-[8px_8px_15px_-2px_#000000,-6px_-6px_15px_-6px_#ffffff]  bg-gradient-to-r from-gray-900 to-gray-800 p-4 lg:p-8 rounded-lg flex flex-col gap-8 justify-center">
+          <div className=" w-full h-full flex justify-center">
+            <div className=" h-64 w-64 rounded-full bg-blue-950 overflow-hidden shadow-[10px_10px_12px_-6px_#000000,-4px_-4px_15px_-6px_#ffffff]">
+              <img
+                className="w-full h-full object-contain rounded-lg mb-2 scale-125  translate-y-6"
+                src="public\assets\pas_foto.png"
+                alt="contactImg"
+              />
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            <h3 className="text-3xl font-bold text-white text-center ">
+              Ahmad Selo Abadi
+            </h3>
+
+            <p className="text-base text-gray-400 tracking-wide">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis
+              ipsam autem cumque, accusantium dicta odio.
+            </p>
+            <p className="text-base text-gray-400 flex items-center gap-2">
+              Phone : <span className="text-lightText">+62 822-7995-7160</span>
+            </p>
+            <p className="text-base text-gray-400 flex items-center gap-2">
+              Email :{" "}
+              <span className="text-lightText">ahmadseloabadi@gmail.com</span>
+            </p>
+            <p className="text-base text-gray-400 flex items-center gap-2">
+              Instagram :{" "}
+              <span className="text-lightText">ahmad.selo.abadi</span>
+            </p>
+          </div>
+        </div>
+        {/* end left contact */}
+
+        {/* right contact */}
+        <div className="z-10 w-full lg:w-3/6 h-full bg-gradient-to-r from-gray-900 to-gray-800 flex flex-col gap-8   lg:p-8 rounded-lg shadow-[8px_8px_15px_-2px_#000000,-6px_-6px_15px_-6px_#ffffff]">
+          <form
+            onSubmit={handleSend}
+            className="w-full flex flex-col gap-4 lg:gap-6 py-2 lg:py-5"
+          >
+            {errMsg || successMsg ? (
+              <p className="  py-3 bg-gradient-to-r from-gray-900 to-gray-800 text-center text-orange-500 rounded-lg shadow-lg shadow-black text-base tracking-wide animate-bounce">
+                {errMsg} {successMsg}
+              </p>
+            ) : (
+              <div className=" w-full h-12  "></div>
+            )}
+
+            <div className="w-full flex flex-col lg:flex-row gap-10">
+              <div className="w-full lg:w-1/2 flex flex-col gap-4">
+                <p className="text-sm text-gray-400 uppercase tracking-wide">
+                  Your name
+                </p>
+                <input
+                  onChange={(e) => setUsername(e.target.value)}
+                  value={username}
+                  className={`rounded-lg ${
+                    errMsg === "Username is required!" && "outline-designColor"
+                  } contactInput`}
+                  type="text"
+                />
+              </div>
+              <div className="w-full lg:w-1/2 flex flex-col gap-4">
+                <p className="text-sm text-gray-400 uppercase tracking-wide">
+                  Phone Number
+                </p>
+                <input
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  value={phoneNumber}
+                  className={`rounded-lg ${
+                    errMsg === "Phone number is required!" &&
+                    "outline-designColor"
+                  } contactInput`}
+                  type="text"
+                />
+              </div>
+            </div>
+            <div className="flex flex-col gap-4">
+              <p className="text-sm text-gray-400 uppercase tracking-wide">
+                Email
+              </p>
+              <input
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+                className={`rounded-lg ${
+                  errMsg === "Please give your Email!" && "outline-designColor"
+                } contactInput`}
+                type="email"
+              />
+            </div>
+            <div className="flex flex-col gap-4">
+              <p className="text-sm text-gray-400 uppercase tracking-wide">
+                Subject
+              </p>
+              <input
+                onChange={(e) => setSubject(e.target.value)}
+                value={subject}
+                className={`rounded-lg ${
+                  errMsg === "Plese give your Subject!" && "outline-designColor"
+                } contactInput`}
+                type="text"
+              />
+            </div>
+            <div className="flex flex-col gap-4">
+              <p className="text-sm text-gray-400 uppercase tracking-wide">
+                Message
+              </p>
+              <textarea
+                onChange={(e) => setMessage(e.target.value)}
+                value={message}
+                className={`rounded-lg ${
+                  errMsg === "Message is required!" && "outline-designColor"
+                } contactTextArea`}
+              ></textarea>
+            </div>
+            <div className="w-full">
+              <button className="w-full h-12 shadow-[6px_6px_15px_-2px_#000000,-4px_-4px_15px_-8px_#ffffff] bg-[hsl(225,9%,9%)] rounded-lg text-base text-gray-100 tracking-wider uppercase hover:shadow-xl hover:shadow-black  hover:text-white duration-300 hover:border-[1px] hover:border-designColor border-transparent transition-all  active:bg-[hsl(223,9%,15%)] active:shadow-lg active:scale-95 font-semibold">
+                Send Message
+              </button>
+            </div>
+            {errMsg || successMsg ? (
+              <p className="py-3 bg-slate-950 text-center text-orange-500 rounded-lg shadow-lg shadow-black text-base tracking-wide animate-bounce">
+                {errMsg} {successMsg}
+              </p>
+            ) : (
+              <div className=" w-full h-12  "></div>
+            )}
+          </form>
+        </div>
+        {/* end right contact */}
+      </div>
+    </div>
+  );
+};
+
+export default Contact;

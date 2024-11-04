@@ -40,7 +40,7 @@ const Hero = () => {
   const socialIcons: SocialIcon[] = [
     {
       Icon: Github,
-      href: "#",
+      href: "https://github.com/ahmadseloabadi",
       color: "text-white",
       bgColor: "from-gray-700 to-gray-900",
       hoverColor: "group-hover:from-gray-800 group-hover:to-black",
@@ -56,7 +56,7 @@ const Hero = () => {
     },
     {
       Icon: Instagram,
-      href: "#",
+      href: "https://www.instagram.com/ahmad.selo.abadi/",
       color: "text-white",
       bgColor: "from-pink-500 via-red-500 to-yellow-500",
       hoverColor:
@@ -65,7 +65,7 @@ const Hero = () => {
     },
     {
       Icon: Mail,
-      href: "#",
+      href: "mailto:ahmadseloabadi@gmail.com",
       color: "text-white",
       bgColor: "from-red-500 to-red-700",
       hoverColor: "group-hover:from-red-600 group-hover:to-red-800",
