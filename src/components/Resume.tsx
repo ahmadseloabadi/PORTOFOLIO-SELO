@@ -145,12 +145,13 @@ const Resume = () => {
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-center mb-16"
+        className="text-center mb-12 "
       >
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-8 pt-20">
+        <h1 className="text-4xl md:text-5xl font-bold text-white pb-4 pt-12 ">
           My Resume
         </h1>
-        <div className="flex justify-center items-center gap-24">
+        <div className="w-3/6 h-1 bg-gray-800 rounded-xl mx-auto"></div>
+        <div className="flex justify-center items-center gap-24 mt-4">
           <span className=" md:block bg-gradient-to-r from-cyan-400 to-fuchsia-400 font-semibold text-lg text-transparent bg-clip-text">
             Job Experience & Education
           </span>

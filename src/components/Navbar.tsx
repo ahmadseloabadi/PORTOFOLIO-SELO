@@ -19,6 +19,7 @@ const Navbar = () => {
     { id: "projects", title: "PROJECT", href: "#projects" },
     { id: "Skills", title: "SKILL", href: "#Skills" },
     { id: "resume", title: "RESUME", href: "#resume" },
+    { id: "contact", title: "CONTACT", href: "#contact" },
   ];
 
   // Enhanced scroll spy with Intersection Observer

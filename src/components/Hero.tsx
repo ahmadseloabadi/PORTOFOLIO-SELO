@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Github, Linkedin, Instagram, Mail } from "lucide-react";
 import ParticlesBackground from "./ParticlesBackground";
+import Tagline from "./Tagline";
 
 interface SocialIcon {
   Icon: typeof Github;
@@ -169,10 +170,7 @@ const Hero = () => {
               </div>
             </div>
 
-            <p className="text-gray-400 max-w-xl mx-auto lg:mx-0">
-              Passionate about creating beautiful and functional web
-              applications with modern technologies and innovative solutions.
-            </p>
+            <Tagline variant="hero" />
 
             {/* Enhanced Social Icons */}
             <div className="flex flex-wrap gap-12 justify-center lg:justify-start">

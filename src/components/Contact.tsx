@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
+import Tagline from "./Tagline";
 
 const Contact = () => {
   const [username, setUsername] = useState<string>("");
@@ -80,6 +81,12 @@ const Contact = () => {
   }, [errMsg, successMsg]);
   return (
     <div id="contact" className="w-full py-20   bg-gray-950">
+      <div className="flex flex-col justify-center items-center text-center">
+        <h1 className="text-4xl md:text-5xl font-bold text-white pb-4  ">
+          Contact With Me
+        </h1>
+        <div className="w-3/6 h-1 bg-gray-800 rounded-xl mx-auto mb-12"></div>
+      </div>
       <div className="lg:w-full h-auto flex flex-col lg:place-items-start  place-items-center  lg:gap-0 gap-12 lg:flex-row lg:justify-around">
         {/* left contact */}
         <div className="z-10 lg:w-2/6 md:w-4/6 w-5/6  h-full shadow-[8px_8px_15px_-2px_#161716,-6px_-6px_15px_-6px_#ffffff]  bg-gradient-to-r from-gray-900 to-gray-800 p-4 lg:p-8 rounded-lg flex flex-col gap-8 justify-center ">
@@ -98,18 +105,15 @@ const Contact = () => {
               Ahmad Selo Abadi
             </h3>
 
-            <p className="text-base text-gray-400 tracking-wide">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis
-              ipsam autem cumque, accusantium dicta odio.
-            </p>
-            <p className="text-base text-gray-400 flex items-center gap-2">
+            <Tagline variant="contact" />
+            <p className="text-base text-white flex items-center gap-2">
               Phone : <span className="text-lightText">+62 822-7995-7160</span>
             </p>
-            <p className="text-base text-gray-400 flex items-center gap-2">
+            <p className="text-base text-white flex items-center gap-2">
               Email :{" "}
               <span className="text-lightText">ahmadseloabadi@gmail.com</span>
             </p>
-            <p className="text-base text-gray-400 flex items-center gap-2">
+            <p className="text-base text-white flex items-center gap-2">
               Instagram :{" "}
               <span className="text-lightText">ahmad.selo.abadi</span>
             </p>
