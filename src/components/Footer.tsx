@@ -71,7 +71,8 @@ const Footer = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-sm text-gray-400 text-center md:text-left"
             >
-              Creating innovative solutions through data analysis
+              Creating Innovative Solutions through Data Analysis and Web
+              Development
             </motion.p>
           </div>
 

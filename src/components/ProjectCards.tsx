@@ -6,7 +6,7 @@ const ProjectCards = () => {
     {
       title: "Javanese Script Classification and Recognition",
       description:
-        "in this project will classify and recognize javanese script and translit it into latin script,with SVM methods and HOG for feature extraction",
+        "An application that classifies and recognizes Javanese script using SVM-HOG feature extraction. identifies and interprets Javanese characters from images, supporting digital preservation and study of Javanese script.",
       image: "/assets/svm-hog.png",
       technologies: [
         "Python",
@@ -24,7 +24,7 @@ const ProjectCards = () => {
     {
       title: "Recommendations Restaurant Yogyakarta",
       description:
-        "In this project will recommendation restaurant in yogyakarta with hybrid filtering method ",
+        "An application providing personalized restaurant recommendations in Yogyakarta using hybrid filtering. By combining content-based and collaborative filtering methods, it delivers tailored suggestions based on user preferences and similar user behaviors, enhancing dining experiences across the city.",
       image: "/assets/sysrec-restaurant.png",
       technologies: ["Streamlit", "Python", "Hybrid filtering"],
       demoUrl: "#",
@@ -36,14 +36,14 @@ const ProjectCards = () => {
       ],
     },
     {
-      title: "AI Image Generator",
+      title: "Sentiment Analysis Myxl",
       description:
-        "Web application that generates unique images using machine learning algorithms and user inputs. Creates stunning artwork with just a few clicks.",
-      image: "/api/placeholder/600/400",
-      technologies: ["React", "Python", "TensorFlow", "AWS"],
+        "An application that analyzes user sentiment from MyXL reviews on Google Play Store. Using a Genetic Algorithm-optimized SVM model, it classifies reviews as positive, negative, or neutral, helping improve service quality and user experience.",
+      image: "/assets/ansen-gasvm-myxl.png",
+      technologies: ["Streamlit", "Python", "Algorithma Genetika", "SVM"],
       demoUrl: "#",
       githubUrl: "#",
-      features: ["AI-Powered", "Custom Styles", "High Resolution Output"],
+      features: ["High Accuration", "Detection New Data", "Simple Design"],
     },
   ];
 
