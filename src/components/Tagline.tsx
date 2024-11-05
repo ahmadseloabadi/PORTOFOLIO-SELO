@@ -47,7 +47,7 @@ const BilingualText: React.FC<BilingualTextProps> = ({
       default:
         return {
           container: "text-lg ",
-          text: "tracking-wide ",
+          text: "tracking-wide md:mr-16 mr-0",
         };
     }
   };
@@ -63,7 +63,7 @@ const BilingualText: React.FC<BilingualTextProps> = ({
     >
       <p
         ref={enRef}
-        className={`absolute  text-center md:text-justify transition-all duration-500 ease-in-out text-white ${
+        className={`absolute break-words  text-center md:text-justify transition-all duration-500 ease-in-out text-white ${
           styles.text
         } ${
           isHovered
@@ -75,7 +75,7 @@ const BilingualText: React.FC<BilingualTextProps> = ({
       </p>
       <p
         ref={idRef}
-        className={`absolute text-center md:text-justify transition-all duration-500 ease-in-out text-white ${
+        className={`absolute break-words text-center md:text-justify transition-all duration-500 ease-in-out text-white ${
           styles.text
         } ${
           isHovered
