@@ -24,7 +24,7 @@ const SkillDiagram = () => {
     if (windowSize.width <= 640) {
       // Mobile
       scale = isPortrait
-        ? Math.min(windowSize.height / (baseWidth * 0.6), 0.33)
+        ? Math.min(windowSize.height / (baseWidth * 0.5), 0.6)
         : Math.min(windowSize.width / (baseWidth * 0.6), 0.35);
     } else if (windowSize.width <= 768) {
       // Tablet
@@ -175,15 +175,23 @@ const SkillDiagram = () => {
     {
       id: "html",
       name: "HTML",
-      position: { x: -625 * scale, y: 0 },
+      position: isMobile
+        ? { x: 0 * scale, y: -625 * scale }
+        : { x: -625 * scale, y: 0 },
       color: "#E34F26",
       glowColor: "rgba(227, 79, 38, 0.6)",
       path: isMobile
-        ? `M0,0 L${-250 * scale},0 L${-350 * scale},0 L${-350 * scale},${
-            -100 * scale
-          } L${-450 * scale},${-100 * scale} L${-450 * scale},${100 * scale} L${
-            -550 * scale
-          },${100 * scale} L${-550 * scale},0`
+        ? `M0,0 
+              L0,${-200 * scale} 
+              L${-100 * scale},${-200 * scale} 
+              L${-100 * scale},${-400 * scale} 
+              L0,${-400 * scale} 
+              L0,${-300 * scale} 
+              L${100 * scale},${-300 * scale} 
+              L${100 * scale},${-500 * scale} 
+              L${10 * scale},${-500 * scale} 
+              L${10 * scale},${-550 * scale} 
+              L${10 * scale},${-625 * scale}`
         : `M0,0 L${-200 * scale},0 L${-200 * scale},${-100 * scale} L${
             -400 * scale
           },${-100 * scale} L${-400 * scale},0 L${-300 * scale},0 L${
@@ -193,14 +201,17 @@ const SkillDiagram = () => {
           } L${-550 * scale},${10 * scale} L${-625 * scale},${10 * scale}`,
       pathPoints: isMobile
         ? [
-            { x: 0, y: 0 },
-            { x: -250 * scale, y: 0 },
-            { x: -350 * scale, y: 0 },
-            { x: -350 * scale, y: -100 * scale },
-            { x: -450 * scale, y: -100 * scale },
-            { x: -450 * scale, y: 100 * scale },
-            { x: -550 * scale, y: 100 * scale },
-            { x: -550 * scale, y: 0 * scale },
+            { y: 0, x: 0 },
+            { y: -200 * scale, x: 0 },
+            { y: -200 * scale, x: -100 * scale },
+            { y: -400 * scale, x: -100 * scale },
+            { y: -400 * scale, x: 0 },
+            { y: -300 * scale, x: 0 },
+            { y: -300 * scale, x: 100 * scale },
+            { y: -500 * scale, x: 100 * scale },
+            { y: -500 * scale, x: 10 * scale },
+            { y: -550 * scale, x: 10 * scale },
+            { y: -625 * scale, x: 10 * scale },
           ]
         : [
             { x: 0, y: 0 },
@@ -220,15 +231,23 @@ const SkillDiagram = () => {
     {
       id: "css",
       name: "CSS",
-      position: { x: 610 * scale, y: 0 },
+      position: isMobile
+        ? { x: 0 * scale, y: 610 * scale }
+        : { x: 610 * scale, y: 0 },
       color: "#1572B6",
       glowColor: "rgba(21, 114, 182, 0.6)",
       path: isMobile
-        ? `M0,0 L${250 * scale},0 L${350 * scale},0 L${350 * scale},${
-            -100 * scale
-          } L${450 * scale},${-100 * scale} L${450 * scale},${100 * scale} L${
-            550 * scale
-          },${100 * scale} L${550 * scale},0`
+        ? `M0,0 
+              L0,${200 * scale} 
+              L${-100 * scale},${200 * scale} 
+              L${-100 * scale},${400 * scale} 
+              L0,${400 * scale} 
+              L0,${300 * scale} 
+              L${100 * scale},${300 * scale} 
+              L${100 * scale},${500 * scale} 
+              L${10 * scale},${500 * scale} 
+              L${10 * scale},${560 * scale} 
+              L${10 * scale},${610 * scale}`
         : `M0,0 L${200 * scale},0 L${200 * scale},${-100 * scale} L${
             400 * scale
           },${-100 * scale} L${400 * scale},0 L${300 * scale},0 L${
@@ -238,14 +257,17 @@ const SkillDiagram = () => {
           } L${560 * scale},${10 * scale} L${610 * scale},${10 * scale}`,
       pathPoints: isMobile
         ? [
-            { x: 0, y: 0 },
-            { x: 250 * scale, y: 0 },
-            { x: 350 * scale, y: 0 },
-            { x: 350 * scale, y: -100 * scale },
-            { x: 450 * scale, y: -100 * scale },
-            { x: 450 * scale, y: 100 * scale },
-            { x: 550 * scale, y: 100 * scale },
-            { x: 550 * scale, y: 0 * scale },
+            { y: 0, x: 0 },
+            { y: 200 * scale, x: 0 },
+            { y: 200 * scale, x: -100 * scale },
+            { y: 400 * scale, x: -100 * scale },
+            { y: 400 * scale, x: 0 },
+            { y: 300 * scale, x: 0 },
+            { y: 300 * scale, x: 100 * scale },
+            { y: 500 * scale, x: 100 * scale },
+            { y: 500 * scale, x: 10 * scale },
+            { y: 560 * scale, x: 10 * scale },
+            { y: 610 * scale, x: 10 * scale },
           ]
         : [
             { x: 0, y: 0 },

@@ -79,15 +79,12 @@ const Contact = () => {
     return () => clearTimeout(timer);
   }, [errMsg, successMsg]);
   return (
-    <div
-      id="contact"
-      className="w-full py-20 border-b-[1px] border-b-black bg-gray-950"
-    >
+    <div id="contact" className="w-full py-20   bg-gray-950">
       <div className="lg:w-full h-auto flex flex-col lg:place-items-start  place-items-center  lg:gap-0 gap-12 lg:flex-row lg:justify-around">
         {/* left contact */}
-        <div className="z-10 lg:w-2/6 md:w-4/6 w-5/6  h-full shadow-[8px_8px_15px_-2px_#000000,-6px_-6px_15px_-6px_#ffffff]  bg-gradient-to-r from-gray-900 to-gray-800 p-4 lg:p-8 rounded-lg flex flex-col gap-8 justify-center">
+        <div className="z-10 lg:w-2/6 md:w-4/6 w-5/6  h-full shadow-[8px_8px_15px_-2px_#161716,-6px_-6px_15px_-6px_#ffffff]  bg-gradient-to-r from-gray-900 to-gray-800 p-4 lg:p-8 rounded-lg flex flex-col gap-8 justify-center ">
           <div className=" w-full h-full flex justify-center">
-            <div className=" h-64 w-64 rounded-full bg-blue-950 overflow-hidden shadow-[10px_10px_12px_-6px_#000000,-4px_-4px_15px_-6px_#ffffff]">
+            <div className=" h-64 w-64 rounded-full bg-blue-950 overflow-hidden shadow-[6px_6px_15px_-2px_#000000,-4px_-4px_15px_-8px_#ffffff]  transform hover:scale-105 hover:border-designColor hover:shadow-black  hover:shadow-xl  transition-all duration-300 cursor-pointer">
               <img
                 className="w-full h-full object-contain rounded-lg mb-2 scale-125  translate-y-6"
                 src="/assets/pas_foto.png"
@@ -121,7 +118,7 @@ const Contact = () => {
         {/* end left contact */}
 
         {/* right contact */}
-        <div className="z-10 lg:w-3/6  w-[90%]  h-full place-items-center  bg-gradient-to-r from-gray-900 to-gray-800 flex flex-col gap-8   lg:p-8 rounded-lg shadow-[8px_8px_15px_-2px_#000000,-6px_-6px_15px_-6px_#ffffff]">
+        <div className="z-10 lg:w-3/6  w-[90%]  h-full place-items-center  bg-gradient-to-r from-gray-900 to-gray-800 flex flex-col gap-8   lg:p-8 rounded-lg shadow-[8px_8px_15px_-2px_#161716,-6px_-6px_15px_-6px_#ffffff]">
           <form
             onSubmit={handleSend}
             className="lg:w-full flex flex-col gap-4 lg:gap-6 py-2 lg:py-5 w-5/6"
@@ -202,7 +199,7 @@ const Contact = () => {
               ></textarea>
             </div>
             <div className="w-full">
-              <button className="w-full h-12 shadow-[6px_6px_15px_-2px_#000000,-4px_-4px_15px_-8px_#ffffff] bg-[hsl(225,9%,9%)] rounded-lg text-base text-gray-100 tracking-wider uppercase hover:shadow-xl hover:shadow-black  hover:text-white duration-300 hover:border-[1px] hover:border-designColor border-transparent transition-all  active:bg-[hsl(223,9%,15%)] active:shadow-lg active:scale-95 font-semibold">
+              <button className="w-full h-12 shadow-[6px_6px_15px_-2px_#000000,-4px_-4px_15px_-8px_#ffffff] bg-[hsl(225,9%,9%)] rounded-lg text-base text-gray-100 tracking-wider uppercase  hover:shadow-black  hover:text-white duration-300 hover:border-[1px] hover:shadow-xl hover:border-designColor border-transparent transition-all  active:bg-[hsl(223,9%,15%)] active:shadow-lg active:scale-95 font-semibold">
                 Send Message
               </button>
             </div>

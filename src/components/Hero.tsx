@@ -175,7 +175,7 @@ const Hero = () => {
             </p>
 
             {/* Enhanced Social Icons */}
-            <div className="flex flex-wrap gap-8 justify-center lg:justify-start">
+            <div className="flex flex-wrap gap-12 justify-center lg:justify-start">
               {socialIcons.map(
                 ({ Icon, href, color, bgColor, hoverColor, label }) => (
                   <a
