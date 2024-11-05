@@ -108,7 +108,7 @@ const Tagline = ({
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full relative">
       <BilingualText content={content || defaultContent} variant={variant} />
     </div>
   );
