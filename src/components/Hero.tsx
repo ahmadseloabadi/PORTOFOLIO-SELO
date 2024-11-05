@@ -115,15 +115,14 @@ const Hero = () => {
     >
       <ParticlesBackground />
       <div className="absolute max-w-6xl w-full mx-auto">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+        <div className="flex flex-col lg:flex-row items-center gap-2 lg:gap-20">
           {/* Enhanced Profile Section */}
-
           <div className="relative w-64 h-64 md:w-72 md:h-72 animate-float">
             <div
               className={`absolute inset-0 rounded-full opacity-20 blur-xl animate-pulse bg-gradient-to-r ${professions[currentProfession].gradient}`}
             ></div>
             <div
-              className={`relative w-full h-full rounded-full overflow-hidden border-4 border-opacity-50 transform hover:scale-105 transition-transform duration-300 ${professions[currentProfession].shadowColor} shadow-lg border-white/20`}
+              className={`relative w-64 h-64 rounded-full overflow-hidden border-4 border-opacity-50 transform hover:scale-105 transition-transform duration-300 ${professions[currentProfession].shadowColor} shadow-lg border-white/20`}
             >
               <img
                 src="/assets/pas_foto.png"
@@ -132,24 +131,25 @@ const Hero = () => {
               />
             </div>
           </div>
-
           {/* Content Section */}
-          <div className="flex-1 space-y-8 text-center lg:text-left">
+          <div className="w-full flex flex-col space-y-8 text-center lg:text-left">
             {/* Enhanced Name with Typing Effect */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
-              Hi, I'm{" "}
-              <span className="relative">
-                <span
-                  className="text-gray-950
+            <div className="w-full">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
+                Hi, I'm{" "}
+                <span className="relative">
+                  <span
+                    className="text-gray-950
         [text-shadow:_0_0_5px_#fff,_0_0_10px_#fff,_0_0_20px_#fff]
         hover:[text-shadow:_0_0_10px_#fff,_0_0_20px_#fff,_0_0_30px_#fff]
         transition-all duration-300"
-                >
-                  {typedText}
+                  >
+                    {typedText}
+                  </span>
+                  <span className="absolute -right-4 top-0 h-full w-[2px] bg-blue-400 animate-blink" />
                 </span>
-                <span className="absolute -right-4 top-0 h-full w-[2px] bg-blue-400 animate-blink" />
-              </span>
-            </h1>
+              </h1>
+            </div>
 
             {/* Enhanced Profession Section with dynamic colors */}
             <div className="h-8 overflow-hidden ">

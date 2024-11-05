@@ -46,8 +46,8 @@ const BilingualText: React.FC<BilingualTextProps> = ({
       case "hero":
       default:
         return {
-          container: "text-lg ",
-          text: "tracking-wide md:mr-16 mr-0",
+          container: "text-lg relative ",
+          text: "tracking-wide lg:mr-16 lg:mx-0 md:mx-16 mr-0 ",
         };
     }
   };
@@ -108,7 +108,7 @@ const Tagline = ({
   };
 
   return (
-    <div className="w-full relative">
+    <div className="w-full">
       <BilingualText content={content || defaultContent} variant={variant} />
     </div>
   );

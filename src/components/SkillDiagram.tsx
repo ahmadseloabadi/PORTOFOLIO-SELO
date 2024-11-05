@@ -72,7 +72,7 @@ const SkillDiagram = () => {
 
   // Fungsi untuk menghitung ukuran CPU core berdasarkan ukuran layar
   const getCpuSize = () => {
-    if (windowSize.width <= 640) return "w-20 h-20"; // Mobile
+    if (windowSize.width <= 640) return "w-24 h-24"; // Mobile
     if (windowSize.width <= 768) return "w-28 h-28"; // Tablet
     return "w-40 h-40"; // Desktop
   };
