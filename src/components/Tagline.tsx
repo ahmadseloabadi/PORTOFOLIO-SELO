@@ -103,7 +103,7 @@ const Tagline = ({
         : "Committed to delivering exceptional web applications and transforming data into meaningful insights through innovative solutions. I'm always open to new collaboration opportunities or projects—let's create something amazing together!",
     id:
       variant === "contact"
-        ? "Saya memiliki minat yang kuat dalam analisis data, sains data, dan pengembangan web full-stack. Dengan komitmen untuk memberikan hasil berkualitas tinggi dan solusi inovatif, saya selalu terbuka untuk peluang kolaborasi baru atau proyek. Jangan ragu untuk menghubungi saya melalui informasi kontak di bawah ini atau dengan mengisi formulir di samping."
+        ? "Saya memiliki minat yang kuat dalam data analisis, data science, dan full-stack web development. Dengan komitmen untuk memberikan hasil berkualitas tinggi dan solusi inovatif, saya selalu terbuka untuk peluang kolaborasi baru atau proyek. Jangan ragu untuk menghubungi saya melalui informasi kontak di bawah ini atau dengan mengisi formulir di samping."
         : "Berkomitmen untuk menghadirkan aplikasi web yang luar biasa dan mengubah data menjadi wawasan bermakna melalui solusi inovatif. Saya selalu terbuka untuk peluang kolaborasi atau proyek baru—mari ciptakan sesuatu yang menakjubkan bersama!",
   };
 

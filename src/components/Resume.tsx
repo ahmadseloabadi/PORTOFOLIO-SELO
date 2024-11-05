@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 interface TimelineItem {
   title: string;
   subtitle: string;
-  period: string;
+  desc: string;
   type: "experience" | "education";
 }
 
@@ -90,11 +90,11 @@ const TimelineCard = ({
           transition-colors duration-300
         `}
       >
-        <div className="flex justify-between items-start mb-2">
+        <div className="flex justify-between items-start ">
           <h3 className={`text-xl font-bold ${textColor}`}>{item.title}</h3>
           <span
             className={`
-              text-xs px-2 py-1 rounded-md
+              text-xs px-2 py-2 rounded-md
               bg-transparent ${textColor}
               border ${borderColor}
             `}
@@ -102,8 +102,9 @@ const TimelineCard = ({
             {item.type === "experience" ? "Experience" : "Education"}
           </span>
         </div>
-        <p className="text-gray-400 mb-2">{item.subtitle}</p>
-        <p className={`text-sm ${textColor}`}>{item.period}</p>
+        <p className="text-white mb-2 text-sm ">{item.subtitle}</p>
+
+        <p className={`text-sm ${textColor}`}>{item.desc}</p>
       </motion.div>
     </motion.div>
   );
@@ -114,27 +115,27 @@ const Resume = () => {
 
   const items: TimelineItem[] = [
     {
-      title: "experience",
-      subtitle: "what you do",
-      period: "2021 - 2022",
+      title: "PT. Dlingo Digital Media",
+      subtitle: "Data Science Intern (Mar 2021 - May 2021)",
+      desc: "Developed sentiment analysis for Twitter reviews using SVM method. Responsible for data collection, text preprocessing, and developing an SVM model to classify sentiments as positive, negative, or neutral. Collaborated with the team to compile analysis reports and provide data-driven recommendations.",
       type: "experience",
     },
     {
-      title: "education",
-      subtitle: "learning by doing",
-      period: "2019 - 2021",
+      title: "UPN “Veteran” Yogyakarta",
+      subtitle: "Informatics (Aug 2018 - Aug 2023)",
+      desc: "Learn various aspects of information technology, including programming, software development, computer networks, and data science.",
       type: "education",
     },
     {
-      title: "experience",
-      subtitle: "what you do",
-      period: "2021 - 2022",
+      title: "Freelancer",
+      subtitle: "Web Dev & ML Project (Jan 2024 - Current)",
+      desc: "Developed a responsive landing page with a user-friendly interface and completed an ML final project, focusing on data preprocessing, feature engineering, and model development to solve a targeted problem.",
       type: "experience",
     },
     {
-      title: "education",
-      subtitle: "learning by doing",
-      period: "2019 - 2021",
+      title: "SYNRGY academy",
+      subtitle: "Full-Stack Web Javascript (Aug 2023 - Mar 2024)",
+      desc: "I recently completed a bootcamp focused on full-stack web development,  I learned how to develop both front-end and back-end components of web applications, ensuring a smooth user experience and efficient server-side logic.",
       type: "education",
     },
   ];

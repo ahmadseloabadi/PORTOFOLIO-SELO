@@ -52,7 +52,7 @@ const socialIcons: SocialIcon[] = [
 ];
 const Footer = () => {
   return (
-    <footer className="relative w-full bg-gray-950 text-gray-300 py-12 overflow-hidden">
+    <footer className=" w-full bg-gray-950 text-gray-300 py-12 overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           {/* Logo Section */}
