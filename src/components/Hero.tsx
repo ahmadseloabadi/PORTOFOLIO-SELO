@@ -31,7 +31,7 @@ const Hero = () => {
       shadowColor: "shadow-blue-500/50",
     },
     {
-      title: "Full Stack Developer",
+      title: "Full Stack Web Developer",
       gradient: "from-rose-400 via-fuchsia-500 to-indigo-600",
       shadowColor: "shadow-rose-500/50",
     },
