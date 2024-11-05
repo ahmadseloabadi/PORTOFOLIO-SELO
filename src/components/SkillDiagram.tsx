@@ -21,10 +21,15 @@ const SkillDiagram = () => {
     const baseWidth = 1440; // Ukuran layar referensi untuk desktop
     let scale;
 
-    if (windowSize.width <= 640) {
+    if (windowSize.width <= 380) {
+      // small Mobile
+      scale = isPortrait
+        ? Math.min(windowSize.height / (baseWidth * 0.6), 0.7)
+        : Math.min(windowSize.width / (baseWidth * 0.6), 0.35);
+    } else if (windowSize.width <= 640) {
       // Mobile
       scale = isPortrait
-        ? Math.min(windowSize.height / (baseWidth * 0.5), 0.6)
+        ? Math.min(windowSize.height / (baseWidth * 0.6), 0.8)
         : Math.min(windowSize.width / (baseWidth * 0.6), 0.35);
     } else if (windowSize.width <= 768) {
       // Tablet
