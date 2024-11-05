@@ -89,7 +89,7 @@ const Contact = () => {
       </div>
       <div className="lg:w-full h-auto flex flex-col lg:place-items-start  place-items-center  lg:gap-0 gap-12 lg:flex-row lg:justify-around">
         {/* left contact */}
-        <div className="z-10 lg:w-2/6 md:w-4/6 w-5/6  h-full shadow-[8px_8px_15px_-2px_#161716,-6px_-6px_15px_-6px_#ffffff]  bg-gradient-to-r from-gray-900 to-gray-800 p-4 lg:p-8 rounded-lg flex flex-col gap-8 justify-center ">
+        <div className="z-10 lg:w-2/6 md:w-4/6 w-[90%]  h-full shadow-[8px_8px_15px_-2px_#161716,-6px_-6px_15px_-6px_#ffffff]  bg-gradient-to-r from-gray-900 to-gray-800 p-4 lg:p-8 rounded-lg flex flex-col gap-8 justify-center ">
           <div className=" w-full h-full flex justify-center">
             <div className=" h-64 w-64 rounded-full bg-blue-950 overflow-hidden shadow-[6px_6px_15px_-2px_#000000,-4px_-4px_15px_-8px_#ffffff]  transform hover:scale-105 hover:border-designColor hover:shadow-black  hover:shadow-xl  transition-all duration-300 ">
               <img
