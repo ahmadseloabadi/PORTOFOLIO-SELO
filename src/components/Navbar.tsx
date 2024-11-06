@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { LuMenu, LuX } from "react-icons/lu";
+import SasukeMangekyo from "./SasukeMangekyo";
 
 interface Section {
   id: string;
@@ -12,6 +13,7 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("home");
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const [isLogoHovered, setIsLogoHovered] = useState(false);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const sections: Section[] = [
@@ -80,10 +82,27 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div
-            className="flex-shrink-0 group cursor-pointer"
+            className="flex-shrink-0 group cursor-pointer relative"
             onClick={() => handleNavClick("home")}
+            onMouseEnter={() => setIsLogoHovered(true)}
+            onMouseLeave={() => setIsLogoHovered(false)}
           >
-            <img src="/assets/superman.png" alt="" className="h-16 w-16 " />
+            {/* <img
+              width="50"
+              height="50"
+              src="https://img.icons8.com/ios-filled/50/FFFFFF/physics.png"
+              alt="physics"
+              className={`lucide lucide-crown h-16 w-16 transition-all duration-500 transform 
+              ${isLogoHovered ? "scale-110" : "scale-100"}
+              hover:drop-shadow-[0_0_8px_rgba(0,255,255,0.8)]`}
+            /> */}
+            <SasukeMangekyo />
+
+            <div
+              className={`absolute inset-0 rounded-full transition-opacity duration-500
+                           bg-gradient-to-r from-cyan-500/20 to-teal-500/20 blur-xl
+                           ${isLogoHovered ? "opacity-100" : "opacity-0"}`}
+            />
           </div>
 
           {/* Desktop Navigation */}
@@ -141,9 +160,9 @@ const Navbar = () => {
               className="group relative p-2 rounded-lg transition-colors duration-300"
             >
               {isMobileMenuOpen ? (
-                <X className="h-6 w-6 text-teal-400" />
+                <LuX className="h-6 w-6 text-teal-400" />
               ) : (
-                <Menu className="h-6 w-6 text-gray-300 group-hover:text-teal-400" />
+                <LuMenu className="h-6 w-6 text-gray-300 group-hover:text-teal-400" />
               )}
             </button>
           </div>

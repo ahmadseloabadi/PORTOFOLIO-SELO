@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { Github, Linkedin, Instagram, Mail } from "lucide-react";
+import { LuGithub, LuLinkedin, LuInstagram, LuMail } from "react-icons/lu";
 import ParticlesBackground from "./ParticlesBackground";
 import Tagline from "./Tagline";
 
 interface SocialIcon {
-  Icon: typeof Github;
+  Icon: typeof LuGithub;
   href: string;
   color: string;
   label: string;
@@ -40,7 +40,7 @@ const Hero = () => {
 
   const socialIcons: SocialIcon[] = [
     {
-      Icon: Github,
+      Icon: LuGithub,
       href: "https://github.com/ahmadseloabadi",
       color: "text-white",
       bgColor: "from-gray-700 to-gray-900",
@@ -48,7 +48,7 @@ const Hero = () => {
       label: "Github",
     },
     {
-      Icon: Linkedin,
+      Icon: LuLinkedin,
       href: "#",
       color: "text-white",
       bgColor: "from-blue-600 to-blue-800",
@@ -56,7 +56,7 @@ const Hero = () => {
       label: "LinkedIn",
     },
     {
-      Icon: Instagram,
+      Icon: LuInstagram,
       href: "https://www.instagram.com/ahmad.selo.abadi/",
       color: "text-white",
       bgColor: "from-pink-500 via-red-500 to-yellow-500",
@@ -65,7 +65,7 @@ const Hero = () => {
       label: "Instagram",
     },
     {
-      Icon: Mail,
+      Icon: LuMail,
       href: "mailto:ahmadseloabadi@gmail.com",
       color: "text-white",
       bgColor: "from-red-500 to-red-700",

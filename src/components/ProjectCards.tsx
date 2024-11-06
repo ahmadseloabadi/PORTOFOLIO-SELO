@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Globe, Github } from "lucide-react";
+import { LuGlobe, LuGithub } from "react-icons/lu";
 
 const ProjectCards = () => {
   const projects = [
@@ -215,7 +215,7 @@ const ProjectCard = ({ project }) => {
               className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 
                 rounded-lg text-white text-sm font-medium transition-colors duration-200"
             >
-              <Globe size={16} />
+              <LuGlobe size={16} />
               <span>Live Demo</span>
             </a>
             <a
@@ -223,7 +223,7 @@ const ProjectCard = ({ project }) => {
               className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 
                 rounded-lg text-white text-sm font-medium transition-colors duration-200"
             >
-              <Github size={16} />
+              <LuGithub size={16} />
               <span>Source</span>
             </a>
           </div>
