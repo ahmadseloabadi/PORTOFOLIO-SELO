@@ -1,12 +1,7 @@
 import { useState, useEffect } from "react";
 import { LuMenu, LuX } from "react-icons/lu";
 import SasukeMangekyo from "./SasukeMangekyo";
-
-interface Section {
-  id: string;
-  title: string;
-  href: string;
-}
+import { NavbarProps } from "./Types";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -16,7 +11,7 @@ const Navbar = () => {
   const [isLogoHovered, setIsLogoHovered] = useState(false);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const sections: Section[] = [
+  const sections: NavbarProps[] = [
     { id: "home", title: "HOME", href: "#home" },
     { id: "projects", title: "PROJECT", href: "#projects" },
     { id: "Skills", title: "SKILL", href: "#Skills" },

@@ -1,18 +1,18 @@
-import Contact from "../components/Contact";
-import Footer from "../components/Footer";
-import Hero from "../components/Hero";
-import Navbar from "../components/Navbar";
-import ProjectCards from "../components/ProjectCards";
-import Resume from "../components/Resume";
+import Contact from "../components/contact/Contact";
+import Footer from "../components/footer/Footer";
+import Hero from "../components/banner/Hero";
+import Navbar from "../components/navbar/Navbar";
+import Projects from "../components/projects/Projects";
+import Resume from "../components/resume/Resume";
 
-import SkillDiagram from "../components/SkillDiagram";
+import SkillDiagram from "../components/skill/SkillDiagram";
 
 export default function Index() {
   return (
     <div className="grid min-h-screen min-w-screen overflow-hidden ">
       <Navbar />
       <Hero />
-      <ProjectCards />
+      <Projects />
       <SkillDiagram />
       <Resume />
       <Contact />

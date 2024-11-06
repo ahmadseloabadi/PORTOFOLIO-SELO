@@ -1,17 +1,8 @@
 import { motion } from "framer-motion";
 import { LuGithub, LuLinkedin, LuInstagram, LuMail } from "react-icons/lu";
+import { FooterProps } from "./Types";
 
-interface SocialIcon {
-  index: number;
-  Icon: typeof LuGithub;
-  href: string;
-  color: string;
-  label: string;
-  bgColor: string;
-  hoverColor: string;
-}
-
-const socialIcons: SocialIcon[] = [
+const socialIcons: FooterProps[] = [
   {
     index: 1,
     Icon: LuGithub,

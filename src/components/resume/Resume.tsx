@@ -1,12 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-
-interface TimelineItem {
-  title: string;
-  subtitle: string;
-  desc: string;
-  type: "experience" | "education";
-}
+import { ResumeProps } from "./Types";
 
 const ConnectorLine = ({
   isLeft,
@@ -36,7 +30,7 @@ const TimelineCard = ({
   onHover,
   hoveredIndex,
 }: {
-  item: TimelineItem;
+  item: ResumeProps;
   index: number;
   onHover: (index: number | null) => void;
   hoveredIndex: number | null;
@@ -113,7 +107,7 @@ const TimelineCard = ({
 const Resume = () => {
   const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
 
-  const items: TimelineItem[] = [
+  const items: ResumeProps[] = [
     {
       title: "PT. Dlingo Digital Media",
       subtitle: "Student Intern (Mar 2021 - May 2021)",

@@ -1,16 +1,8 @@
 import { useState, useEffect } from "react";
 import { LuGithub, LuLinkedin, LuInstagram, LuMail } from "react-icons/lu";
-import ParticlesBackground from "./ParticlesBackground";
-import Tagline from "./Tagline";
-
-interface SocialIcon {
-  Icon: typeof LuGithub;
-  href: string;
-  color: string;
-  label: string;
-  bgColor: string;
-  hoverColor: string;
-}
+import ParticlesBackground from "../reuseable/ParticlesBackground";
+import Tagline from "../reuseable/Tagline";
+import { HeroProps } from "./Types";
 
 const Hero = () => {
   const [typedText, setTypedText] = useState("");
@@ -38,7 +30,7 @@ const Hero = () => {
     },
   ];
 
-  const socialIcons: SocialIcon[] = [
+  const socialIcons: HeroProps[] = [
     {
       Icon: LuGithub,
       href: "https://github.com/ahmadseloabadi",

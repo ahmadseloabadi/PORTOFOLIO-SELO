@@ -1,74 +1,8 @@
-import { useState, useRef } from "react";
+import { useRef, useState } from "react";
 import { LuGlobe, LuGithub } from "react-icons/lu";
+import { ProjectProps } from "./Types";
 
-const ProjectCards = () => {
-  const projects = [
-    {
-      title: "Javanese Script Classification and Recognition",
-      description:
-        "An application that classifies and recognizes Javanese script using SVM-HOG feature extraction. identifies and interprets Javanese characters from images, supporting digital preservation and study of Javanese script.",
-      image: "/assets/svm-hog.png",
-      technologies: [
-        "Python",
-        "SVM",
-        "HOG",
-        "Flask",
-        "HTML",
-        "CSS",
-        "JavaScript",
-      ],
-      demoUrl: "#",
-      githubUrl: "#",
-      features: ["High Accuration", "Detection New Data", "Simple Design"],
-    },
-    {
-      title: "Recommendations Restaurant Yogyakarta",
-      description:
-        "An application providing personalized restaurant recommendations in Yogyakarta using hybrid filtering. By combining content-based and collaborative filtering methods, it delivers tailored suggestions based on user preferences and similar user behaviors, enhancing dining experiences across the city.",
-      image: "/assets/sysrec-restaurant.png",
-      technologies: ["Streamlit", "Python", "Hybrid filtering"],
-      demoUrl: "#",
-      githubUrl: "#",
-      features: [
-        "Simple Desain",
-        "CRUD feature in Rating",
-        "Real-Time Recommendation",
-      ],
-    },
-    {
-      title: "Sentiment Analysis Myxl",
-      description:
-        "An application that analyzes user sentiment from MyXL reviews on Google Play Store. Using a Genetic Algorithm-optimized SVM model, it classifies reviews as positive, negative, or neutral, helping improve service quality and user experience.",
-      image: "/assets/ansen-gasvm-myxl.png",
-      technologies: ["Streamlit", "Python", "Algorithma Genetika", "SVM"],
-      demoUrl: "#",
-      githubUrl: "#",
-      features: ["High Accuration", "Detection New Data", "Simple Design"],
-    },
-  ];
-
-  return (
-    <div
-      className="min-h-screen bg-gray-950 py-20 px-4 sm:px-6 lg:px-8"
-      id="projects"
-    >
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-8">
-          My Projects
-        </h2>
-        <div className="w-4/6 h-1 bg-gray-800 rounded-xl mx-auto mb-12"></div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-          {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const ProjectCard = ({ project }) => {
+const ProjectsCard = ({ project }: { project: ProjectProps }) => {
   const cardRef = useRef<HTMLInputElement>(null);
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
   const [glowPosition, setGlowPosition] = useState({ x: 50, y: 50 });
@@ -127,7 +61,7 @@ const ProjectCard = ({ project }) => {
         className={`px-3 py-1 rounded-full text-xs font-medium ${
           colorMap[tech] || "bg-gray-400 border-gray-300"
         } 
-        text-gray-900 border transform hover:scale-105 transition-transform duration-200`}
+          text-gray-900 border transform hover:scale-105 transition-transform duration-200`}
       >
         {tech}
       </div>
@@ -148,7 +82,7 @@ const ProjectCard = ({ project }) => {
       {/* Main Card */}
       <div
         className={`relative bg-gray-800 rounded-2xl overflow-hidden transition-all duration-300 ease-out
-          shadow-lg hover:shadow-2xl border border-gray-700 h-full`}
+            shadow-lg hover:shadow-2xl border border-gray-700 h-full`}
         style={{
           transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg) translateZ(0)`,
           transformStyle: "preserve-3d",
@@ -159,8 +93,8 @@ const ProjectCard = ({ project }) => {
           className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
           style={{
             background: `radial-gradient(circle at ${glowPosition.x}% ${glowPosition.y}%, 
-              rgba(56, 189, 248, 0.3) 0%, 
-              rgba(17, 24, 39, 0) 60%)`,
+                rgba(56, 189, 248, 0.3) 0%, 
+                rgba(17, 24, 39, 0) 60%)`,
           }}
         />
 
@@ -213,7 +147,7 @@ const ProjectCard = ({ project }) => {
             <a
               href={project.demoUrl}
               className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 
-                rounded-lg text-white text-sm font-medium transition-colors duration-200"
+                  rounded-lg text-white text-sm font-medium transition-colors duration-200"
             >
               <LuGlobe size={16} />
               <span>Live Demo</span>
@@ -221,7 +155,7 @@ const ProjectCard = ({ project }) => {
             <a
               href={project.githubUrl}
               className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 
-                rounded-lg text-white text-sm font-medium transition-colors duration-200"
+                  rounded-lg text-white text-sm font-medium transition-colors duration-200"
             >
               <LuGithub size={16} />
               <span>Source</span>
@@ -233,4 +167,4 @@ const ProjectCard = ({ project }) => {
   );
 };
 
-export default ProjectCards;
+export default ProjectsCard;

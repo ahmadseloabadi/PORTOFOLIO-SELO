@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
-import Tagline from "./Tagline";
+import Tagline from "../reuseable/Tagline";
 import { LuInstagram, LuMail, LuMapPin, LuPhone } from "react-icons/lu";
 
 const Contact = () => {
