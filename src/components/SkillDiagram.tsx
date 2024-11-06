@@ -117,7 +117,7 @@ const SkillDiagram = () => {
             { x: -150 * scale, y: -400 * scale },
             { x: -300 * scale, y: -400 * scale },
             { x: -300 * scale, y: -570 * scale },
-            { x: -200 * scale, y: -570 * scale },
+            { x: -250 * scale, y: -570 * scale },
           ]
         : [
             { x: -50 * scale, y: 0 },
@@ -127,7 +127,7 @@ const SkillDiagram = () => {
             { x: -400 * scale, y: -150 * scale },
             { x: -400 * scale, y: -300 * scale },
             { x: -570 * scale, y: -300 * scale },
-            { x: -570 * scale, y: -200 * scale },
+            { x: -570 * scale, y: -250 * scale },
           ],
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
     },
@@ -163,7 +163,7 @@ const SkillDiagram = () => {
             { x: 150 * scale, y: -400 * scale },
             { x: 300 * scale, y: -400 * scale },
             { x: 300 * scale, y: -570 * scale },
-            { x: 200 * scale, y: -570 * scale },
+            { x: 250 * scale, y: -570 * scale },
           ]
         : [
             { x: 50 * scale, y: 0 },
@@ -173,7 +173,7 @@ const SkillDiagram = () => {
             { x: 400 * scale, y: -150 * scale },
             { x: 400 * scale, y: -300 * scale },
             { x: 570 * scale, y: -300 * scale },
-            { x: 570 * scale, y: -200 * scale },
+            { x: 570 * scale, y: -250 * scale },
           ],
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
     },
@@ -216,7 +216,7 @@ const SkillDiagram = () => {
             { y: -500 * scale, x: 100 * scale },
             { y: -500 * scale, x: 10 * scale },
             { y: -550 * scale, x: 10 * scale },
-            { y: -625 * scale, x: 10 * scale },
+            { y: -620 * scale, x: 10 * scale },
           ]
         : [
             { x: 0, y: 0 },
@@ -229,7 +229,7 @@ const SkillDiagram = () => {
             { x: -500 * scale, y: 100 * scale },
             { x: -500 * scale, y: 10 * scale },
             { x: -550 * scale, y: 10 * scale },
-            { x: -625 * scale, y: 10 * scale },
+            { x: -620 * scale, y: 10 * scale },
           ],
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
     },
@@ -321,7 +321,7 @@ const SkillDiagram = () => {
             { x: -150 * scale, y: 400 * scale },
             { x: -300 * scale, y: 400 * scale },
             { x: -300 * scale, y: 570 * scale },
-            { x: -200 * scale, y: 570 * scale },
+            { x: -290 * scale, y: 570 * scale },
           ]
         : [
             { x: -50 * scale, y: 0 },
@@ -331,7 +331,7 @@ const SkillDiagram = () => {
             { x: -400 * scale, y: 150 * scale },
             { x: -400 * scale, y: 330 * scale },
             { x: -570 * scale, y: 330 * scale },
-            { x: -570 * scale, y: 270 * scale },
+            { x: -570 * scale, y: 290 * scale },
           ],
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
     },
@@ -367,7 +367,7 @@ const SkillDiagram = () => {
             { x: 150 * scale, y: 400 * scale },
             { x: 300 * scale, y: 400 * scale },
             { x: 300 * scale, y: 570 * scale },
-            { x: 200 * scale, y: 570 * scale },
+            { x: 290 * scale, y: 570 * scale },
           ]
         : [
             { x: 50 * scale, y: 0 },
@@ -377,7 +377,7 @@ const SkillDiagram = () => {
             { x: 400 * scale, y: 150 * scale },
             { x: 400 * scale, y: 330 * scale },
             { x: 570 * scale, y: 330 * scale },
-            { x: 570 * scale, y: 270 * scale },
+            { x: 570 * scale, y: 290 * scale },
           ],
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg",
     },
