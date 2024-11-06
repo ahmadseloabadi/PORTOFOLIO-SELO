@@ -1,5 +1,3 @@
-import React from "react";
-
 const SasukeMangekyo = () => {
   return (
     <div className="group relative w-16 h-16 transition-all duration-500 hover:scale-110">
