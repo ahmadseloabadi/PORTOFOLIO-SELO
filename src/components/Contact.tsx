@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import Tagline from "./Tagline";
+import { LuInstagram, LuMail, LuMapPin, LuPhone } from "react-icons/lu";
 
 const Contact = () => {
   const [username, setUsername] = useState<string>("");
@@ -106,17 +107,24 @@ const Contact = () => {
             </h3>
 
             <Tagline variant="contact" />
-            <p className="text-base text-white flex items-center gap-2">
-              Phone : <span className="text-lightText">+62 822-7995-7160</span>
-            </p>
-            <p className="text-base text-white flex items-center gap-2">
-              Email :{" "}
+            <div className="text-base text-white flex items-center gap-2">
+              <LuPhone className="min-w-[20px] min-h-[20px] relative" /> :{" "}
+              <span className="text-lightText">+62 822-7995-7160</span>
+            </div>
+            <div className="text-base text-white flex items-center gap-2">
+              <LuMail className="min-w-[20px] min-h-[20px] relative" /> :{" "}
               <span className="text-lightText">ahmadseloabadi@gmail.com</span>
-            </p>
-            <p className="text-base text-white flex items-center gap-2">
-              Instagram :{" "}
+            </div>
+            <div className="text-base text-white flex items-center gap-2">
+              <LuInstagram className="min-w-[20px] min-h-[20px] relative" /> :{" "}
               <span className="text-lightText">ahmad.selo.abadi</span>
-            </p>
+            </div>
+            <div className="text-base text-white flex items-center gap-2">
+              <LuMapPin className="min-w-[20px] min-h-[20px] relative" /> :{" "}
+              <span className="text-lightText">
+                Poncowati, Kec. Terbanggi Besar, Kab. Lampung Tengah, Lampung
+              </span>
+            </div>
           </div>
         </div>
         {/* end left contact */}
@@ -197,7 +205,7 @@ const Contact = () => {
               <textarea
                 onChange={(e) => setMessage(e.target.value)}
                 value={message}
-                className={`rounded-lg ${
+                className={`resize-none h-32 rounded-lg ${
                   errMsg === "Message is required!" && "outline-designColor"
                 } contactTextArea`}
               ></textarea>
