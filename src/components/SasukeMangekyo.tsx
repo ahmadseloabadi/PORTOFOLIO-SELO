@@ -35,7 +35,7 @@ const SasukeMangekyo = () => {
 
       {/* Mangekyo */}
       <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-        <div className="relative w-16 h-16 bg-[#050505] rounded-full border-2 border-black animate-[spin_5s_linear_infinite] group-hover:shadow-[0_0_20px_8px_rgba(228,20,20,0.8)]">
+        <div className="relative w-16 h-16 bg-[#050505] rounded-full  animate-[spin_5s_linear_infinite] group-hover:shadow-[0_0_15px_5px_rgba(228,20,20,0.7)]">
           {/* mangekyo point 2 */}
           <div
             className="absolute top-1/2 left-1/2 h-[2.8em] w-[2.8em] -translate-x-1/2 -translate-y-1/2 
