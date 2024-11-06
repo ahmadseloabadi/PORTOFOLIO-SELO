@@ -116,7 +116,7 @@ const Resume = () => {
   const items: TimelineItem[] = [
     {
       title: "PT. Dlingo Digital Media",
-      subtitle: "Data Science Intern (Mar 2021 - May 2021)",
+      subtitle: "Student Intern (Mar 2021 - May 2021)",
       desc: "Developed sentiment analysis for Twitter reviews using SVM method. Responsible for data collection, text preprocessing, and developing an SVM model to classify sentiments as positive, negative, or neutral. Collaborated with the team to compile analysis reports and provide data-driven recommendations.",
       type: "experience",
     },
