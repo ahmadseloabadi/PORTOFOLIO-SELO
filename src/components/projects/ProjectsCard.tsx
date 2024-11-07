@@ -116,7 +116,7 @@ const ProjectsCard = ({ project }: { project: ProjectProps }) => {
         </div>
 
         {/* Content */}
-        <div className="p-6  transform translate-z-20 ">
+        <div className="p-3  transform translate-z-20 ">
           <div className="relative h-[70px] mb-5 z-20 ">
             <p className="absolute text-justify  inset-0 transform   p-3 hover:break-words line-clamp-3 hover:line-clamp-none overflow-hidden  rounded-lg text-sm text-white transition duration-300 ease-in-out hover:h-fit hover:bg-slate-800  hover:overflow-visible hover:shadow-lg">
               {project.description}
