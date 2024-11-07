@@ -32,33 +32,22 @@ const ProjectsFilter = ({ projects }: { projects: ProjectProps[] }) => {
   });
 
   const filteredProjects = projects.filter((project) => {
-    // Check if a main category is selected
     if (selectedMainCategory) {
-      // Check if the project's main category matches the selected main category
       if (project.category[0] === selectedMainCategory) {
-        // Check if a sub category is selected
         if (selectedSubCategory) {
-          // Check if the project's sub category matches the selected sub category
           return project.category[1].includes(selectedSubCategory);
-        } else {
-          // No sub category is selected, so show all projects with the selected main category
-          return true;
         }
-      } else {
-        return false;
+        return true;
       }
-    } else {
-      // No main category is selected, so show all projects
-      return true;
+      return false;
     }
+    return true;
   });
 
   const handleMainCategoryClick = (category: string) => {
     if (selectedMainCategory === category) {
-      // If the same main category is clicked, toggle the sub-category dropdown
       setIsSubCategoryDropdownOpen((prevState) => !prevState);
     } else {
-      // If a different main category is clicked, update the selected main category and sub-category
       setSelectedMainCategory(category);
       setSelectedSubCategory(null);
       setIsSubCategoryDropdownOpen(true);
@@ -90,48 +79,62 @@ const ProjectsFilter = ({ projects }: { projects: ProjectProps[] }) => {
     <div>
       <div className="flex flex-wrap gap-4 mb-8">
         <button
-          className={`px-4 py-2 rounded-md transition-colors ${
-            !selectedMainCategory
-              ? "bg-blue-500 text-white hover:bg-blue-600"
-              : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-          }`}
+          className={`px-6 py-2  transform hover:shadow-black  hover:text-white duration-300  hover:shadow-xl hover:border-designColor border-transparent transition-all  active:bg-[hsl(225,9%,9%)] active:shadow-lg active:scale-95  rounded-lg text-base uppercase
+            ${
+              !selectedMainCategory
+                ? "bg-blue-500 text-white shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-600"
+                : "shadow-[6px_6px_15px_-2px_#161716,-4px_-4px_15px_-8px_#ffffff]   text-gray-100 tracking-wider   "
+            } relative overflow-hidden group`}
           onClick={() => {
             setSelectedMainCategory(null);
             setSelectedSubCategory(null);
           }}
         >
-          All
+          <span className="relative z-10">All</span>
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
         </button>
+
         {mainCategories.map((category) => (
           <div className="relative" key={category}>
             <button
-              className={`px-4 py-2 rounded-md transition-colors flex items-center ${
-                selectedMainCategory === category
-                  ? "bg-blue-500 text-white hover:bg-blue-600"
-                  : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-              }`}
+              className={`pl-6 pr-4 py-2  transform hover:shadow-black  hover:text-white duration-300  hover:shadow-xl hover:border-designColor border-transparent transition-all  active:bg-[hsl(225,9%,9%)] active:shadow-lg active:scale-95  rounded-lg text-base uppercase flex items-center
+                ${
+                  selectedMainCategory === category
+                    ? "bg-blue-500 text-white shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.8)] hover:bg-blue-600"
+                    : "shadow-[6px_6px_15px_-2px_#161716,-4px_-4px_15px_-8px_#ffffff]   text-gray-100 tracking-wider "
+                } relative overflow-hidden group`}
               onClick={() => handleMainCategoryClick(category)}
             >
-              {selectedMainCategory === category && selectedSubCategory
-                ? selectedSubCategory
-                : category}
+              <span className="relative z-10">
+                {selectedMainCategory === category && selectedSubCategory
+                  ? selectedSubCategory
+                  : category}
+              </span>
               <LuChevronDown
-                className={`ml-2 w-4 h-4 transition-transform ${
-                  isSubCategoryDropdownOpen && selectedMainCategory === category
-                    ? "rotate-180"
-                    : ""
-                }`}
+                className={`ml-2 w-4 h-4 transition-transform duration-300 relative z-10
+                  ${
+                    isSubCategoryDropdownOpen &&
+                    selectedMainCategory === category
+                      ? "rotate-180"
+                      : ""
+                  }`}
               />
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
             </button>
+
             {isSubCategoryDropdownOpen && selectedMainCategory === category && (
               <div
                 ref={dropdownRef}
-                className="absolute z-10 bg-white shadow-lg rounded-md mt-2 w-48"
+                className="absolute z-10 bg-gray-800 shadow-[0_0_20px_rgba(59,130,246,0.3)] rounded-lg mt-2 w-52 
+                  backdrop-blur-sm backdrop-filter animate-fadeIn"
               >
                 <button
-                  className={`block w-full text-left px-4 py-2 hover:bg-gray-200 ${
-                    selectedSubCategory === null ? "bg-gray-200" : "bg-white"
-                  }`}
+                  className={`block rounded-lg w-full text-left px-4 py-2 hover:bg-blue-500 hover:text-white transition-colors duration-200 uppercase
+                    ${
+                      selectedSubCategory === null
+                        ? "bg-blue-500 text-white "
+                        : "text-gray-300"
+                    }`}
                   onClick={() => handleSubCategoryClick(null)}
                 >
                   All
@@ -139,11 +142,12 @@ const ProjectsFilter = ({ projects }: { projects: ProjectProps[] }) => {
                 {subCategories[category].map((subCategory) => (
                   <button
                     key={subCategory}
-                    className={`block w-full text-left px-4 py-2 hover:bg-gray-200 ${
-                      selectedSubCategory === subCategory
-                        ? "bg-gray-200"
-                        : "bg-white"
-                    }`}
+                    className={`block w-full rounded-lg text-left px-4 py-2 hover:bg-blue-500 hover:text-white transition-colors duration-200 uppercase 
+                      ${
+                        selectedSubCategory === subCategory
+                          ? "bg-blue-500 text-white"
+                          : "text-gray-300"
+                      }`}
                     onClick={() => handleSubCategoryClick(subCategory)}
                   >
                     {subCategory}
@@ -155,7 +159,7 @@ const ProjectsFilter = ({ projects }: { projects: ProjectProps[] }) => {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 animate-fadeIn">
         {filteredProjects.map((project, index) => (
           <ProjectsCard key={index} project={project} />
         ))}
