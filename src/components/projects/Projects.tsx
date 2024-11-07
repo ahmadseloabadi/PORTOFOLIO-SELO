@@ -4,6 +4,17 @@ import { ProjectProps } from "./Types";
 const Projects = () => {
   const projects: ProjectProps[] = [
     {
+      title: "Sentiment Analysis Myxl",
+      description:
+        "An application that analyzes user sentiment from MyXL reviews on Google Play Store. Using a Genetic Algorithm-optimized SVM model with SMOTE for handle imbalance dataset, it classifies reviews as positive, negative, or neutral, helping improve service quality and user experience.",
+      image: "/assets/ansen-gasvm-myxl.png",
+      technologies: ["Streamlit", "Python", "Algorithma Genetika", "SVM"],
+      category: ["Machine Learning", "Analysis Sentiment"],
+      demoUrl: "#",
+      githubUrl: "https://github.com/ahmadseloabadi/SMOTE-SVM-GA",
+      features: ["High Accuration", "Detection New Data", "Simple Design"],
+    },
+    {
       title: "Javanese Script Classification and Recognition",
       description:
         "An application that classifies and recognizes Javanese script using SVM-HOG feature extraction. identifies and interprets Javanese characters from images, supporting digital preservation and study of Javanese script.",
@@ -19,7 +30,7 @@ const Projects = () => {
       ],
       category: ["Machine Learning", "Img Processing"],
       demoUrl: "#",
-      githubUrl: "#",
+      githubUrl: "https://github.com/ahmadseloabadi/svm-hog",
       features: ["High Accuration", "Detection New Data", "Simple Design"],
     },
     {
@@ -38,37 +49,40 @@ const Projects = () => {
         "Real-Time Recommendation",
       ],
     },
-    {
-      title: "Sentiment Analysis Myxl",
-      description:
-        "An application that analyzes user sentiment from MyXL reviews on Google Play Store. Using a Genetic Algorithm-optimized SVM model, it classifies reviews as positive, negative, or neutral, helping improve service quality and user experience.",
-      image: "/assets/ansen-gasvm-myxl.png",
-      technologies: ["Streamlit", "Python", "Algorithma Genetika", "SVM"],
-      category: ["Machine Learning", "Analysis Sentiment"],
-      demoUrl: "#",
-      githubUrl: "#",
-      features: ["High Accuration", "Detection New Data", "Simple Design"],
-    },
-    {
-      title: "Qiscus Landing Page",
-      description: "landing page from qiscus web app",
-      image: "#",
-      technologies: ["HTML", "CSS"],
-      category: ["Web App", "Single Page App"],
-      demoUrl: "#",
-      githubUrl: "#",
-      features: ["High Accuration", "Detection New Data", "Simple Design"],
-    },
+
     {
       title: "We Fly",
       description:
-        "Result of the final project of SYNRGY academy whose theme is E-Flight Ticket Platform.",
-      image: "#",
-      technologies: ["React", "Typescript", "Tailwind"],
+        "The final project from SYNRGY Academy, completed by Team 8, was themed around creating an E-Flight Ticket Platform.",
+      image: "/assets/wefly.png",
+      technologies: ["React", "TypeScript", "Tailwind", "PostgreSQL"],
       category: ["Web App", "Interactive App"],
-      demoUrl: "#",
-      githubUrl: "#",
-      features: ["High Accuration", "Detection New Data", "Simple Design"],
+      demoUrl: "https://wefly.netlify.app/",
+      githubUrl: "https://github.com/WeFly-Team/Fullstack-Web-Javascript",
+      features: ["Responsive Desain", "Interactive App"],
+    },
+
+    {
+      title: "Qiscus Landing Page",
+      description:
+        "Clone landing page from qiscus web app . part of SYNRGY Challenge",
+      image: "/assets/qiscus.png",
+      technologies: ["HTML", "CSS", "JavaScript"],
+      category: ["Web App", "Single Page App"],
+      demoUrl: "https://ahmadseloabadi.github.io/slicing-qiscus/",
+      githubUrl: "https://github.com/ahmadseloabadi/slicing-qiscus",
+      features: ["Single Page App", "Simple Design"],
+    },
+    {
+      title: "Cashier Landing Page",
+      description:
+        "Results of learning website slicing from a Figma design in a class at BuildWithAngga.",
+      image: "/assets/Cashier-bwa.png",
+      technologies: ["HTML", "CSS", "JavaScript"],
+      category: ["Web App", "Single Page App"],
+      demoUrl: "https://ahmadseloabadi.github.io/slicing-cashier-bwa/",
+      githubUrl: "https://github.com/ahmadseloabadi/slicing-cashier-bwa",
+      features: ["Single Page App", "Simple Design"],
     },
   ];
 
