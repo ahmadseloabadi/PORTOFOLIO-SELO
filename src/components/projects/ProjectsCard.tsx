@@ -103,7 +103,7 @@ const ProjectsCard = ({ project }: { project: ProjectProps }) => {
           <img
             src={project.image}
             alt={project.title}
-            className="w-full h-full  object-cover transform group-hover:scale-110 transition-transform duration-500"
+            className="w-full h-full  object-fill transform group-hover:scale-110 transition-transform duration-500"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/70 to-transparent" />
 
@@ -116,13 +116,15 @@ const ProjectsCard = ({ project }: { project: ProjectProps }) => {
         </div>
 
         {/* Content */}
-        <div className="p-6 transform translate-z-20">
-          <p className="text-gray-300 text-sm mb-4 line-clamp-3">
-            {project.description}
-          </p>
+        <div className="p-6  transform translate-z-20 ">
+          <div className="relative h-[70px] mb-5 z-20 ">
+            <p className="absolute text-justify  inset-0 transform   p-3 hover:break-words line-clamp-3 hover:line-clamp-none overflow-hidden  rounded-lg text-sm text-white transition duration-300 ease-in-out hover:h-fit hover:bg-slate-800  hover:overflow-visible hover:shadow-lg">
+              {project.description}
+            </p>
+          </div>
 
           {/* Features */}
-          <div className="mb-4">
+          <div className="mb-5">
             <div className="flex flex-wrap gap-2">
               {project.features.map((feature, idx) => (
                 <span
