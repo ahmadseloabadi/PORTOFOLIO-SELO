@@ -10,7 +10,7 @@ const Projects = () => {
       image: "/assets/ansen-gasvm-myxl.png",
       technologies: ["Streamlit", "Python", "Algorithma Genetika", "SVM"],
       category: ["Machine Learning", "Analysis Sentiment"],
-      demoUrl: "https://smote-svm-ga-9xbdvfjcqcnk6zbyespptz.streamlit.app/",
+      demoUrl: "#",
       githubUrl: "https://github.com/ahmadseloabadi/SMOTE-SVM-GA",
       features: ["High Accuration", "Detection New Data", "Simple Design"],
     },
@@ -21,7 +21,7 @@ const Projects = () => {
       image: "/assets/ansen-gasvm-kredivo.png",
       technologies: ["Streamlit", "Python", "Algorithma Genetika", "SVM"],
       category: ["Machine Learning", "Analysis Sentiment"],
-      demoUrl: "https://w5zw4dqpwfsmbhplfqzblc.streamlit.app/",
+      demoUrl: "#",
       githubUrl:
         "https://github.com/ahmadseloabadi/analisis-sentimen-kredivo-GA-SVM",
       features: ["High Accuration", "Detection New Data", "Simple Design"],
@@ -64,8 +64,7 @@ const Projects = () => {
       technologies: ["Streamlit", "Python", "Hybrid filtering"],
 
       category: ["Machine Learning", "Recomendation"],
-      demoUrl:
-        "https://recsys-restaurant-app-ezv93g3cu7yuazxuzdv7vi.streamlit.app/",
+      demoUrl: "#",
       githubUrl:
         "https://github.com/ahmadseloabadi/recsys-restaurant-streamlit",
       features: [
@@ -82,7 +81,7 @@ const Projects = () => {
       technologies: ["Streamlit", "Python", "collaborative filtering"],
 
       category: ["Machine Learning", "Recomendation"],
-      demoUrl: "https://c283zuqsq3ip535yhxvfiy.streamlit.app/",
+      demoUrl: "#",
       githubUrl:
         "https://github.com/ahmadseloabadi/sysrec-movie-collaborative-filtering-",
       features: ["Simple Desain", "Real-Time Recommendation"],
@@ -146,8 +145,7 @@ const Projects = () => {
         "Analysis Sentiment",
         "Aspect Based Sentiment",
       ],
-      demoUrl:
-        "https://female-daily-svm-lda-ymnvtr9bd87xvvjqzjbxhb.streamlit.app/",
+      demoUrl: "#",
       githubUrl: "https://github.com/ahmadseloabadi/FEMALE-DAILY-SVM-LDA",
       features: ["High Accuration", "Detection New Data", "Simple Design"],
     },
@@ -158,8 +156,7 @@ const Projects = () => {
       image: "/assets/ansen-tixid.png",
       technologies: ["Streamlit", "Python", "SMOTE", "KNN"],
       category: ["Machine Learning", "Analysis Sentiment"],
-      demoUrl:
-        "https://sentiment-analysis-knn-spuhrzb6ozhzdvuska4q5w.streamlit.app/",
+      demoUrl: "#",
       githubUrl: "https://github.com/ahmadseloabadi/sentiment-analysis-KNN",
       features: ["High Accuration", "Detection New Data", "Simple Design"],
     },
