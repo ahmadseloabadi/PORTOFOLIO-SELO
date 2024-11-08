@@ -1,5 +1,12 @@
-import { useState, useEffect } from "react";
-import { LuGithub, LuLinkedin, LuInstagram, LuMail } from "react-icons/lu";
+import { useState, useEffect, useRef } from "react";
+import {
+  LuGithub,
+  LuLinkedin,
+  LuInstagram,
+  LuMail,
+  LuDownload,
+  LuChevronDown,
+} from "react-icons/lu";
 import ParticlesBackground from "../reuseable/ParticlesBackground";
 import Tagline from "../reuseable/Tagline";
 import { HeroProps } from "./Types";
@@ -10,6 +17,23 @@ const Hero = () => {
   const [loopNum, setLoopNum] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(150);
   const [currentProfession, setCurrentProfession] = useState(0);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const handleDownloadCV = (language: "ID" | "EN") => {
+    // Replace these URLs with your actual CV file URLs
+    const cvFiles = {
+      ID: "/assets/cv/CV_Ahmad_Selo_Abadi_ID.pdf",
+      EN: "/assets/cv/CV_Ahmad_Selo_Abadi_EN.pdf",
+    };
+
+    const link = document.createElement("a");
+    link.href = cvFiles[language];
+    link.download = `CV_Ahmad_Selo_Abadi_${language}.pdf`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   const fullName = "AHMAD SELO ABADI";
   const professions = [
@@ -41,7 +65,7 @@ const Hero = () => {
     },
     {
       Icon: LuLinkedin,
-      href: "#",
+      href: "https://www.linkedin.com/in/ahmad-selo-abadi-832812242/",
       color: "text-white",
       bgColor: "from-blue-600 to-blue-800",
       hoverColor: "group-hover:from-blue-700 group-hover:to-blue-900",
@@ -65,6 +89,21 @@ const Hero = () => {
       label: "Email",
     },
   ];
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   // Enhanced typing effect with pause and delete
   useEffect(() => {
@@ -215,6 +254,54 @@ const Hero = () => {
                   </a>
                 )
               )}
+            </div>
+
+            {/* Single CV Button with Dropdown */}
+            <div className="flex justify-center lg:justify-start">
+              <div className="relative" ref={dropdownRef}>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsDropdownOpen(!isDropdownOpen);
+                  }}
+                  className="group relative px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 transition-all duration-300"
+                >
+                  <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 opacity-50 blur group-hover:opacity-75 transition-opacity duration-300" />
+                  <div className="relative flex items-center gap-2">
+                    <LuDownload className="w-5 h-5" />
+                    <span className="font-medium">Download CV</span>
+                    <LuChevronDown
+                      className={`w-4 h-4 transition-transform duration-300 ${
+                        isDropdownOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </div>
+                </button>
+
+                {/* Dropdown Menu */}
+                {isDropdownOpen && (
+                  <div
+                    className="absolute mt-2 w-full rounded-xl overflow-hidden bg-gray-800 shadow-lg border border-gray-700"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {(["ID", "EN"] as const).map((lang) => (
+                      <button
+                        key={lang}
+                        onClick={() => handleDownloadCV(lang)}
+                        className="w-full px-4 py-2 text-left hover:bg-gray-700 transition-colors duration-200 flex items-center gap-2"
+                      >
+                        <span className="w-6 font-light ">
+                          {lang === "ID" ? "ID" : " EN "}
+                        </span>
+                        <span className="border-l-2 pl-2">
+                          {" "}
+                          {lang === "ID" ? "Indonesia" : "English"}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>

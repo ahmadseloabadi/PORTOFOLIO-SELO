@@ -15,7 +15,7 @@ const socialIcons: FooterProps[] = [
   {
     index: 2,
     Icon: LuLinkedin,
-    href: "#",
+    href: "https://www.linkedin.com/in/ahmad-selo-abadi-832812242/",
     color: "text-white",
     bgColor: "from-blue-600 to-blue-800",
     hoverColor: "group-hover:from-blue-700 group-hover:to-blue-900",
