@@ -124,7 +124,7 @@ const ProjectsCard = ({ project }: { project: ProjectProps }) => {
           </div>
 
           {/* Features */}
-          <div className="mb-5">
+          <div className="mb-5 px-3">
             <div className="flex flex-wrap gap-2">
               {project.features.map((feature, idx) => (
                 <span
@@ -138,14 +138,14 @@ const ProjectsCard = ({ project }: { project: ProjectProps }) => {
           </div>
 
           {/* Technologies */}
-          <div className="flex flex-wrap gap-2 mb-6">
+          <div className="flex flex-wrap gap-2 mb-6 px-3">
             {project.technologies.map((tech, index) => (
               <TechBadge key={index} tech={tech} />
             ))}
           </div>
 
           {/* Action Links */}
-          <div className="flex gap-4 mt-auto">
+          <div className="flex gap-4 mt-auto px-3">
             <a
               href={project.demoUrl}
               className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 
