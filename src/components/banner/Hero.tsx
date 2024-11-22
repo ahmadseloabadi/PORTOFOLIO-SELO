@@ -7,6 +7,7 @@ import {
   LuDownload,
   LuChevronDown,
 } from "react-icons/lu";
+import { FaKaggle } from "react-icons/fa";
 import ParticlesBackground from "../reuseable/ParticlesBackground";
 import Tagline from "../reuseable/Tagline";
 import { HeroProps } from "./Types";
@@ -87,6 +88,14 @@ const Hero = () => {
       bgColor: "from-red-500 to-red-700",
       hoverColor: "group-hover:from-red-600 group-hover:to-red-800",
       label: "Email",
+    },
+    {
+      Icon: FaKaggle,
+      href: "https://www.kaggle.com/ahmadseloabadi",
+      color: "text-white",
+      bgColor: "from-blue-500 to-blue-700",
+      hoverColor: "group-hover:from-blue-600 group-hover:to-blue-800",
+      label: "Kaggle",
     },
   ];
   useEffect(() => {

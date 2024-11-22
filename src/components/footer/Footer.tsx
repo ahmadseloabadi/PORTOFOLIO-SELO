@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { LuGithub, LuLinkedin, LuInstagram, LuMail } from "react-icons/lu";
+import { FaKaggle } from "react-icons/fa";
 import { FooterProps } from "./Types";
 
 const socialIcons: FooterProps[] = [
@@ -39,6 +40,15 @@ const socialIcons: FooterProps[] = [
     bgColor: "from-red-500 to-red-700",
     hoverColor: "group-hover:from-red-600 group-hover:to-red-800",
     label: "Email",
+  },
+  {
+    index: 5,
+    Icon: FaKaggle,
+    href: "https://www.kaggle.com/ahmadseloabadi",
+    color: "text-white",
+    bgColor: "from-blue-500 to-blue-700",
+    hoverColor: "group-hover:from-blue-600 group-hover:to-blue-800",
+    label: "Kaggle",
   },
 ];
 const Footer = () => {
